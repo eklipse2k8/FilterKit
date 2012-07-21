@@ -288,6 +288,7 @@
 				DSTROOT = /tmp/FilterKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterKit/FilterKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../lib/GPUImage/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -301,6 +302,7 @@
 				DSTROOT = /tmp/FilterKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterKit/FilterKit-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../lib/GPUImage/\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

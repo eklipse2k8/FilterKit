@@ -7,6 +7,7 @@
 //
 
 #import "FKGPUFilterGroup.h"
+#import "GPUImageFilterGroup.h"
 
 @implementation FKGPUFilterGroup
 
