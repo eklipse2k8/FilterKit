@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "GPUImagePicture.h"
+#import "FilterKit.h"
 
 @interface ViewController ()
 
@@ -18,6 +20,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    
+    FilterKit *fk = [[FilterKit alloc] init];
+    NSLog(@"%@", fk);
+    
+    GPUImagePicture *ip = [[GPUImagePicture alloc] init];
+    NSLog(@"%@", ip);
 }
 
 - (void)didReceiveMemoryWarning

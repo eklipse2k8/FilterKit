@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4528F0415BB210100D675BC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7047E15BB1B0C0036C98D /* libGPUImage.a */; };
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
 		A4E703EF15BB18120036C98D /* FilterKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A4E703EE15BB18120036C98D /* FilterKit.h */; };
 		A4E703F115BB18120036C98D /* FilterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E703F015BB18120036C98D /* FilterKit.m */; };
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4528F0415BB210100D675BC /* libGPUImage.a in Frameworks */,
 				A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

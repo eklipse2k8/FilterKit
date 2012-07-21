@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4528F1215BB212500D675BC /* libFilterKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7043F15BB193F0036C98D /* libFilterKit.a */; };
+		A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1315BB222F00D675BC /* OpenGLES.framework */; };
+		A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1415BB222F00D675BC /* QuartzCore.framework */; };
+		A4528F1815BB223C00D675BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1715BB223C00D675BC /* CoreMedia.framework */; };
 		A4E7041715BB19210036C98D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041615BB19210036C98D /* UIKit.framework */; };
 		A4E7041915BB19210036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041815BB19210036C98D /* Foundation.framework */; };
 		A4E7041B15BB19210036C98D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041A15BB19210036C98D /* CoreGraphics.framework */; };
@@ -15,8 +19,6 @@
 		A4E7042715BB19210036C98D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7042615BB19210036C98D /* AppDelegate.m */; };
 		A4E7042A15BB19210036C98D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7042915BB19210036C98D /* ViewController.m */; };
 		A4E7042D15BB19210036C98D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7042B15BB19210036C98D /* ViewController.xib */; };
-		A4E7044515BB19530036C98D /* libFilterKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7043F15BB193F0036C98D /* libFilterKit.a */; };
-		A4E7044715BB19530036C98D /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7044615BB19530036C98D /* libGPUImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4528F1315BB222F00D675BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A4528F1415BB222F00D675BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A4528F1715BB223C00D675BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A4E7041215BB19210036C98D /* FilterDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilterDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E7041615BB19210036C98D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4E7041815BB19210036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,7 +56,6 @@
 		A4E7042915BB19210036C98D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4E7042C15BB19210036C98D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A4E7043315BB193F0036C98D /* FilterKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterKit.xcodeproj; path = ../FilterKit/FilterKit.xcodeproj; sourceTree = "<group>"; };
-		A4E7044615BB19530036C98D /* libGPUImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGPUImage.a; path = "/Users/mjarjoura/Projects/iOSDevCamp/FilterKit/lib/GPUImage/framework/../build/Release-iphoneos/libGPUImage.a"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +63,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E7044715BB19530036C98D /* libGPUImage.a in Frameworks */,
-				A4E7044515BB19530036C98D /* libFilterKit.a in Frameworks */,
+				A4528F1815BB223C00D675BC /* CoreMedia.framework in Frameworks */,
+				A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */,
+				A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */,
+				A4528F1215BB212500D675BC /* libFilterKit.a in Frameworks */,
 				A4E7041715BB19210036C98D /* UIKit.framework in Frameworks */,
 				A4E7041915BB19210036C98D /* Foundation.framework in Frameworks */,
 				A4E7041B15BB19210036C98D /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +79,9 @@
 		A4E7040715BB19210036C98D = {
 			isa = PBXGroup;
 			children = (
+				A4528F1715BB223C00D675BC /* CoreMedia.framework */,
+				A4528F1315BB222F00D675BC /* OpenGLES.framework */,
+				A4528F1415BB222F00D675BC /* QuartzCore.framework */,
 				A4E7041C15BB19210036C98D /* FilterDemoApp */,
 				A4E7041515BB19210036C98D /* Frameworks */,
 				A4E7041315BB19210036C98D /* Products */,
@@ -90,7 +99,6 @@
 		A4E7041515BB19210036C98D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A4E7044615BB19530036C98D /* libGPUImage.a */,
 				A4E7043315BB193F0036C98D /* FilterKit.xcodeproj */,
 				A4E7041615BB19210036C98D /* UIKit.framework */,
 				A4E7041815BB19210036C98D /* Foundation.framework */,
@@ -299,6 +307,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterDemoApp/FilterDemoApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../lib/GPUImage/\"/**",
+					"\"$(SRCROOT)/../FilterKit/\"/**",
+				);
 				INFOPLIST_FILE = "FilterDemoApp/FilterDemoApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -316,6 +328,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterDemoApp/FilterDemoApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../lib/GPUImage/\"/**",
+					"\"$(SRCROOT)/../FilterKit/\"/**",
+				);
 				INFOPLIST_FILE = "FilterDemoApp/FilterDemoApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
