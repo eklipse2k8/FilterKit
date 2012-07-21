@@ -1,0 +1,3 @@
+[submodule "lib/GPUImage"]
+	path = lib/GPUImage
+	url = git@github.com:eklipse2k8/GPUImage.git
