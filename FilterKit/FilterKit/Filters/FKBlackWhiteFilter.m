@@ -9,6 +9,11 @@
 #import "FKBlackWhiteFilter.h"
 #import "FKGPUFilterGroup.h"
 
+#import "GPUImageMonochromeFilter.h"
+#import "GPUImagePicture.h"
+#import "GPUImageView.h"
+#import "GPUImagePicture.h"
+
 @implementation FKBlackWhiteFilter
 
 - (id)init
@@ -19,6 +24,10 @@
     
     FKGPUFilterGroup *filter = [[FKGPUFilterGroup alloc] init];
     [self addFilterToChain:filter];
+    
+    GPUImageMonochromeFilter *mono = [[GPUImageMonochromeFilter alloc] init];
+    [mono forceProcessingAtSize:CGSizeMake(600, 600)];
+    [filter addGPUFilter:mono];
     
     return self;
 }

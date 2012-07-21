@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FKFilter.h"
 
+@class GPUImageFilter;
+
 @interface FKGPUFilterGroup : NSObject <FKFilter>
+
+- (void)addGPUFilter:(GPUImageFilter *)filter;
 
 @end
