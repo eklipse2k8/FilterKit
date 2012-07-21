@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "FKImageView.h"
-#import "FKBlackWhiteFilter.h"
+#import "FKImagePickerController.m"
 
 @interface ViewController ()
 
@@ -19,21 +18,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    FKImageView *image = [[FKImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 300)];
-    image.image = [UIImage imageNamed:@"mean_cat.jpg"];
-    [self.view addSubview:image];
-    
-    FKBlackWhiteFilter *bwFilter = [[FKBlackWhiteFilter alloc] init];
-    image.filterChain = bwFilter;
-    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = CGRectMake(10, 200, 300, 80);
+    [button setTitle:NSLocalizedString(@"Show Picker", @"") forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(showPicker:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)showPicker:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    FKImagePickerController *imagePickerController = [[FKImagePickerController alloc] initWithNibName:nil bundle:nil];
+    [self presentModalViewController:imagePickerController animated:YES];
 }
 
 @end

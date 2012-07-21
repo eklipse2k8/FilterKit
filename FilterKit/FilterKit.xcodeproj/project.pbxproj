@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4528F0415BB210100D675BC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7047E15BB1B0C0036C98D /* libGPUImage.a */; };
-		A4528F1B15BB34A500D675BC /* FKLibraryImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F1A15BB34A500D675BC /* FKLibraryImagePickerController.m */; };
+		A4528F1B15BB34A500D675BC /* FKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F1A15BB34A500D675BC /* FKImagePickerController.m */; };
 		A4528F2215BB35AE00D675BC /* FKFilterPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */; };
 		A4528F2515BB35C400D675BC /* FKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2415BB35C400D675BC /* FKImageView.m */; };
 		A4528F2815BB3D6E00D675BC /* FKFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2715BB3D6E00D675BC /* FKFilterChain.m */; };
@@ -51,8 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A4528F1915BB34A500D675BC /* FKLibraryImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKLibraryImagePickerController.h; sourceTree = "<group>"; };
-		A4528F1A15BB34A500D675BC /* FKLibraryImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKLibraryImagePickerController.m; sourceTree = "<group>"; };
+		A4528F1915BB34A500D675BC /* FKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImagePickerController.h; sourceTree = "<group>"; };
+		A4528F1A15BB34A500D675BC /* FKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKImagePickerController.m; sourceTree = "<group>"; };
 		A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterPictureController.h; sourceTree = "<group>"; };
 		A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterPictureController.m; sourceTree = "<group>"; };
 		A4528F2315BB35C400D675BC /* FKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImageView.h; sourceTree = "<group>"; };
@@ -129,8 +129,8 @@
 				A4528F3315BB435100D675BC /* CoreFilters */,
 				A4E703EE15BB18120036C98D /* FilterKit.h */,
 				A4E703F015BB18120036C98D /* FilterKit.m */,
-				A4528F1915BB34A500D675BC /* FKLibraryImagePickerController.h */,
-				A4528F1A15BB34A500D675BC /* FKLibraryImagePickerController.m */,
+				A4528F1915BB34A500D675BC /* FKImagePickerController.h */,
+				A4528F1A15BB34A500D675BC /* FKImagePickerController.m */,
 				A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */,
 				A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */,
 				A4528F2315BB35C400D675BC /* FKImageView.h */,
@@ -239,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E703F115BB18120036C98D /* FilterKit.m in Sources */,
-				A4528F1B15BB34A500D675BC /* FKLibraryImagePickerController.m in Sources */,
+				A4528F1B15BB34A500D675BC /* FKImagePickerController.m in Sources */,
 				A4528F2215BB35AE00D675BC /* FKFilterPictureController.m in Sources */,
 				A4528F2515BB35C400D675BC /* FKImageView.m in Sources */,
 				A4528F2815BB3D6E00D675BC /* FKFilterChain.m in Sources */,

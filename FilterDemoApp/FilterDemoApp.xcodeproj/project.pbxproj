@@ -11,7 +11,6 @@
 		A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1315BB222F00D675BC /* OpenGLES.framework */; };
 		A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1415BB222F00D675BC /* QuartzCore.framework */; };
 		A4528F1815BB223C00D675BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1715BB223C00D675BC /* CoreMedia.framework */; };
-		A4528F4015BB54AA00D675BC /* mean_cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4528F3F15BB54AA00D675BC /* mean_cat.jpg */; };
 		A4E7041715BB19210036C98D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041615BB19210036C98D /* UIKit.framework */; };
 		A4E7041915BB19210036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041815BB19210036C98D /* Foundation.framework */; };
 		A4E7041B15BB19210036C98D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041A15BB19210036C98D /* CoreGraphics.framework */; };
@@ -20,6 +19,8 @@
 		A4E7042715BB19210036C98D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7042615BB19210036C98D /* AppDelegate.m */; };
 		A4E7042A15BB19210036C98D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7042915BB19210036C98D /* ViewController.m */; };
 		A4E7042D15BB19210036C98D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7042B15BB19210036C98D /* ViewController.xib */; };
+		D063456415BB59330023A18B /* filtered@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D063456015BB59330023A18B /* filtered@2x.jpg */; };
+		D063456715BB59330023A18B /* unfiltered@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D063456315BB59330023A18B /* unfiltered@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,6 @@
 		A4528F1315BB222F00D675BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A4528F1415BB222F00D675BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4528F1715BB223C00D675BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		A4528F3F15BB54AA00D675BC /* mean_cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mean_cat.jpg; sourceTree = "<group>"; };
 		A4E7041215BB19210036C98D /* FilterDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilterDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E7041615BB19210036C98D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4E7041815BB19210036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,6 +58,8 @@
 		A4E7042915BB19210036C98D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4E7042C15BB19210036C98D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A4E7043315BB193F0036C98D /* FilterKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterKit.xcodeproj; path = ../FilterKit/FilterKit.xcodeproj; sourceTree = "<group>"; };
+		D063456015BB59330023A18B /* filtered@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "filtered@2x.jpg"; sourceTree = "<group>"; };
+		D063456315BB59330023A18B /* unfiltered@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "unfiltered@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				A4E7042815BB19210036C98D /* ViewController.h */,
 				A4E7042915BB19210036C98D /* ViewController.m */,
 				A4E7042B15BB19210036C98D /* ViewController.xib */,
+				D063455E15BB59330023A18B /* Resources */,
 				A4E7041D15BB19210036C98D /* Supporting Files */,
 			);
 			path = FilterDemoApp;
@@ -125,7 +128,6 @@
 		A4E7041D15BB19210036C98D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A4528F3F15BB54AA00D675BC /* mean_cat.jpg */,
 				A4E7041E15BB19210036C98D /* FilterDemoApp-Info.plist */,
 				A4E7041F15BB19210036C98D /* InfoPlist.strings */,
 				A4E7042215BB19210036C98D /* main.m */,
@@ -140,6 +142,23 @@
 				A4E7043F15BB193F0036C98D /* libFilterKit.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D063455E15BB59330023A18B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D063455F15BB59330023A18B /* images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D063455F15BB59330023A18B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D063456015BB59330023A18B /* filtered@2x.jpg */,
+				D063456315BB59330023A18B /* unfiltered@2x.jpg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +231,8 @@
 			files = (
 				A4E7042115BB19210036C98D /* InfoPlist.strings in Resources */,
 				A4E7042D15BB19210036C98D /* ViewController.xib in Resources */,
-				A4528F4015BB54AA00D675BC /* mean_cat.jpg in Resources */,
+				D063456415BB59330023A18B /* filtered@2x.jpg in Resources */,
+				D063456715BB59330023A18B /* unfiltered@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
