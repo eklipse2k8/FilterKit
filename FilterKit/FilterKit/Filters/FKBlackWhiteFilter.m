@@ -37,4 +37,14 @@
     
 }
 
+- (NSString *)title
+{
+    return @"Black & White";
+}
+
+- (NSString *)localizedTitle
+{
+    return NSLocalizedString(@"Black & White", @"Localized title for default filter chain.");
+}
+
 @end
