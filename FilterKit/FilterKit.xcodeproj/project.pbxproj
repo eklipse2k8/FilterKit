@@ -11,6 +11,9 @@
 		A4528F1B15BB34A500D675BC /* FKLibraryImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F1A15BB34A500D675BC /* FKLibraryImagePickerController.m */; };
 		A4528F2215BB35AE00D675BC /* FKFilterPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */; };
 		A4528F2515BB35C400D675BC /* FKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2415BB35C400D675BC /* FKImageView.m */; };
+		A4528F2815BB3D6E00D675BC /* FKFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2715BB3D6E00D675BC /* FKFilterChain.m */; };
+		A4528F2B15BB412700D675BC /* FKGPUFilterGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2A15BB412700D675BC /* FKGPUFilterGroup.m */; };
+		A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2D15BB413400D675BC /* FKMaskFilter.m */; };
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
 		A4E703EF15BB18120036C98D /* FilterKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A4E703EE15BB18120036C98D /* FilterKit.h */; };
 		A4E703F115BB18120036C98D /* FilterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E703F015BB18120036C98D /* FilterKit.m */; };
@@ -53,6 +56,13 @@
 		A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterPictureController.m; sourceTree = "<group>"; };
 		A4528F2315BB35C400D675BC /* FKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImageView.h; sourceTree = "<group>"; };
 		A4528F2415BB35C400D675BC /* FKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKImageView.m; sourceTree = "<group>"; };
+		A4528F2615BB3D6E00D675BC /* FKFilterChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterChain.h; sourceTree = "<group>"; };
+		A4528F2715BB3D6E00D675BC /* FKFilterChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterChain.m; sourceTree = "<group>"; };
+		A4528F2915BB412700D675BC /* FKGPUFilterGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKGPUFilterGroup.h; sourceTree = "<group>"; };
+		A4528F2A15BB412700D675BC /* FKGPUFilterGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKGPUFilterGroup.m; sourceTree = "<group>"; };
+		A4528F2C15BB413400D675BC /* FKMaskFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKMaskFilter.h; sourceTree = "<group>"; };
+		A4528F2D15BB413400D675BC /* FKMaskFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKMaskFilter.m; sourceTree = "<group>"; };
+		A4528F3215BB418400D675BC /* FKFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FKFilter.h; sourceTree = "<group>"; };
 		A4E703E615BB18120036C98D /* libFilterKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFilterKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E703E915BB18120036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FilterKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -78,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A4E703EB15BB18120036C98D /* FilterKit */,
+				A4E703EC15BB18120036C98D /* Supporting Files */,
 				A4E703E815BB18120036C98D /* Frameworks */,
 				A4E703E715BB18120036C98D /* Products */,
 			);
@@ -107,11 +118,17 @@
 				A4E703F015BB18120036C98D /* FilterKit.m */,
 				A4528F1915BB34A500D675BC /* FKLibraryImagePickerController.h */,
 				A4528F1A15BB34A500D675BC /* FKLibraryImagePickerController.m */,
-				A4E703EC15BB18120036C98D /* Supporting Files */,
 				A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */,
 				A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */,
 				A4528F2315BB35C400D675BC /* FKImageView.h */,
 				A4528F2415BB35C400D675BC /* FKImageView.m */,
+				A4528F2615BB3D6E00D675BC /* FKFilterChain.h */,
+				A4528F2715BB3D6E00D675BC /* FKFilterChain.m */,
+				A4528F2915BB412700D675BC /* FKGPUFilterGroup.h */,
+				A4528F2A15BB412700D675BC /* FKGPUFilterGroup.m */,
+				A4528F2C15BB413400D675BC /* FKMaskFilter.h */,
+				A4528F2D15BB413400D675BC /* FKMaskFilter.m */,
+				A4528F3215BB418400D675BC /* FKFilter.h */,
 			);
 			path = FilterKit;
 			sourceTree = "<group>";
@@ -122,6 +139,7 @@
 				A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = FilterKit;
 			sourceTree = "<group>";
 		};
 		A4E7047815BB1B0C0036C98D /* Products */ = {
@@ -211,6 +229,9 @@
 				A4528F1B15BB34A500D675BC /* FKLibraryImagePickerController.m in Sources */,
 				A4528F2215BB35AE00D675BC /* FKFilterPictureController.m in Sources */,
 				A4528F2515BB35C400D675BC /* FKImageView.m in Sources */,
+				A4528F2815BB3D6E00D675BC /* FKFilterChain.m in Sources */,
+				A4528F2B15BB412700D675BC /* FKGPUFilterGroup.m in Sources */,
+				A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
