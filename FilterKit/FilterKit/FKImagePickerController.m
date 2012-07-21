@@ -8,7 +8,7 @@
 
 #import "FKImagePickerController.h"
 #import "FKImageView.h"
-#import "FKBlackWhiteFilter.h"
+#import "FKGPUFilterGroup.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface FKImagePickerController ()
@@ -46,21 +46,20 @@
     self.image.image = [UIImage imageNamed:@"unfiltered.jpg"];
     [self.view addSubview:self.image];
     
+    
+    FKGPUFilterGroup *group = [[FKGPUFilterGroup alloc] init];
+    
     self.filteredImage = [[FKImageView alloc] initWithFrame:imageFrame];
-    self.filteredImage.image = [UIImage imageNamed:@"filtered.jpg"];
+    self.filteredImage.image = [group imageWithFilterAppliedWithImage:[UIImage imageNamed:@"unfiltered.jpg"]];
     [self.view addSubview:self.filteredImage];
+    
 
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor blackColor].CGColor;
     self.filterMask.frame = CGRectMake(0, 0, 400, 1000);
     self.filterMask.anchorPoint = CGPointMake(1.0, 1.0);
     self.filterMask.position = CGPointMake(0, imageFrame.size.height);
-
-//    [self.view.layer addSublayer:self.filterMask];
     self.filteredImage.layer.mask = filterMask;
-    
-    //    FKBlackWhiteFilter *bwFilter = [[FKBlackWhiteFilter alloc] init];
-    //    image.filterChain = bwFilter;
 }
 
 - (void)viewDidUnload
@@ -80,19 +79,30 @@
 
 - (void)didDragViewPort:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    CGPoint currentTranslation = [gestureRecognizer translationInView:self.view];
+    CGFloat offset = currentTranslation.y/200;
+    
+    
     if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
        gestureRecognizer.state == UIGestureRecognizerStateCancelled){
         
+        CATransform3D finalTransform;
         
+        if(offset > 0.5){
+            finalTransform = CATransform3DMakeRotation(M_PI_2, 0, 0, 1.0);
+        }else{
+            finalTransform = CATransform3DIdentity;
+        }
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            self.filterMask.transform = finalTransform;
+        }];
         
     }else{
-        CGPoint currentTranslation = [gestureRecognizer translationInView:self.view];
-        
-        //    CATransform3D transform = CATransform3DMakeTranslation(currentTranslation.x, currentTranslation.y, 0.0);
-        
-        CGFloat offset = currentTranslation.y/200;
         
         CGFloat angle = MAX(0.0, MIN(M_PI_2*offset, M_PI_2));
+        
+        //    CATransform3D transform = CATransform3DMakeTranslation(currentTranslation.x, currentTranslation.y, 0.0);
         
         CATransform3D transform = CATransform3DMakeRotation(angle, 0, 0, 1.0);
         
