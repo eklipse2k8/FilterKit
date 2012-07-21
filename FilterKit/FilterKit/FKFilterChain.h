@@ -6,8 +6,15 @@
 //  Copyright (c) 2012 iOS Dev Camp 2012. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@protocol FKFilter;
 
 @interface FKFilterChain : NSObject
+
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *localizedTitle;
+
+- (void)addFilterToChain:(id <FKFilter>)filter;
 
 @end

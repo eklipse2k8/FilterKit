@@ -11,6 +11,20 @@
 
 @implementation FKGPUFilterGroup
 
+- (id)init
+{
+    self = [super init];
+    if (!self)
+        return nil;
+    
+    return self;
+}
+
+- (void)dealloc
+{
+    
+}
+
 - (UIImage *)imageWithFilterAppliedWithImage:(UIImage *)image
 {
     return nil;

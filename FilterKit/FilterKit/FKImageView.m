@@ -8,24 +8,31 @@
 
 #import "FKImageView.h"
 
-@implementation FKImageView
+@interface FKImageView ()
+@property (assign, nonatomic) BOOL filterApplied;
+@end
+
+@implementation FKImageView {
+    @private
+    
+}
+
+@synthesize image = _image;
+@synthesize filterChain = _filterChain;
+@synthesize filterApplied = _filterApplied;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
+    if (!self)
+        return nil;
+    
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)processFilter
 {
-    // Drawing code
+    
 }
-*/
 
 @end

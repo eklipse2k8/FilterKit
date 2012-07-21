@@ -14,6 +14,7 @@
 		A4528F2815BB3D6E00D675BC /* FKFilterChain.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2715BB3D6E00D675BC /* FKFilterChain.m */; };
 		A4528F2B15BB412700D675BC /* FKGPUFilterGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2A15BB412700D675BC /* FKGPUFilterGroup.m */; };
 		A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2D15BB413400D675BC /* FKMaskFilter.m */; };
+		A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */; };
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
 		A4E703EF15BB18120036C98D /* FilterKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A4E703EE15BB18120036C98D /* FilterKit.h */; };
 		A4E703F115BB18120036C98D /* FilterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E703F015BB18120036C98D /* FilterKit.m */; };
@@ -63,6 +64,8 @@
 		A4528F2C15BB413400D675BC /* FKMaskFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKMaskFilter.h; sourceTree = "<group>"; };
 		A4528F2D15BB413400D675BC /* FKMaskFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKMaskFilter.m; sourceTree = "<group>"; };
 		A4528F3215BB418400D675BC /* FKFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FKFilter.h; sourceTree = "<group>"; };
+		A4528F3415BB437C00D675BC /* FKBlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKBlackWhiteFilter.h; path = Filters/FKBlackWhiteFilter.h; sourceTree = "<group>"; };
+		A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKBlackWhiteFilter.m; path = Filters/FKBlackWhiteFilter.m; sourceTree = "<group>"; };
 		A4E703E615BB18120036C98D /* libFilterKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFilterKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E703E915BB18120036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FilterKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -84,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4528F3315BB435100D675BC /* CoreFilters */ = {
+			isa = PBXGroup;
+			children = (
+				A4528F3415BB437C00D675BC /* FKBlackWhiteFilter.h */,
+				A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */,
+			);
+			name = CoreFilters;
+			sourceTree = "<group>";
+		};
 		A4E703DB15BB18120036C98D = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +126,7 @@
 		A4E703EB15BB18120036C98D /* FilterKit */ = {
 			isa = PBXGroup;
 			children = (
+				A4528F3315BB435100D675BC /* CoreFilters */,
 				A4E703EE15BB18120036C98D /* FilterKit.h */,
 				A4E703F015BB18120036C98D /* FilterKit.m */,
 				A4528F1915BB34A500D675BC /* FKLibraryImagePickerController.h */,
@@ -232,6 +245,7 @@
 				A4528F2815BB3D6E00D675BC /* FKFilterChain.m in Sources */,
 				A4528F2B15BB412700D675BC /* FKGPUFilterGroup.m in Sources */,
 				A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */,
+				A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

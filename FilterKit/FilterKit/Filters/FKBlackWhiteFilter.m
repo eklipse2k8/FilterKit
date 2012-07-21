@@ -1,14 +1,14 @@
 //
-//  FKMaskFilter.m
+//  FKBlackWhiteFilter.m
 //  FilterKit
 //
 //  Created by Matt Jarjoura on 7/21/12.
 //  Copyright (c) 2012 iOS Dev Camp 2012. All rights reserved.
 //
 
-#import "FKMaskFilter.h"
+#import "FKBlackWhiteFilter.h"
 
-@implementation FKMaskFilter
+@implementation FKBlackWhiteFilter
 
 - (id)init
 {
@@ -22,11 +22,6 @@
 - (void)dealloc
 {
     
-}
-
-- (UIImage *)imageWithFilterAppliedWithImage:(UIImage *)image
-{
-    return nil;
 }
 
 @end
