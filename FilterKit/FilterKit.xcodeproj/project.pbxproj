@@ -10,30 +10,22 @@
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
 		A4E703EF15BB18120036C98D /* FilterKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A4E703EE15BB18120036C98D /* FilterKit.h */; };
 		A4E703F115BB18120036C98D /* FilterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E703F015BB18120036C98D /* FilterKit.m */; };
-		A4E7040615BB187E0036C98D /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7040115BB183F0036C98D /* libGPUImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A4E7040015BB183F0036C98D /* PBXContainerItemProxy */ = {
+		A4E7047D15BB1B0C0036C98D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
 			remoteInfo = GPUImage;
 		};
-		A4E7040215BB183F0036C98D /* PBXContainerItemProxy */ = {
+		A4E7047F15BB1B0C0036C98D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
 			remoteInfo = GPUImageTests;
-		};
-		A4E7040415BB18760036C98D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
-			remoteInfo = GPUImage;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,7 +48,7 @@
 		A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FilterKit-Prefix.pch"; sourceTree = "<group>"; };
 		A4E703EE15BB18120036C98D /* FilterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterKit.h; sourceTree = "<group>"; };
 		A4E703F015BB18120036C98D /* FilterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterKit.m; sourceTree = "<group>"; };
-		A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../../lib/GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../lib/GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E7040615BB187E0036C98D /* libGPUImage.a in Frameworks */,
 				A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +83,7 @@
 		A4E703E815BB18120036C98D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */,
 				A4E703E915BB18120036C98D /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -110,17 +102,16 @@
 		A4E703EC15BB18120036C98D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */,
 				A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A4E703F815BB183F0036C98D /* Products */ = {
+		A4E7047815BB1B0C0036C98D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A4E7040115BB183F0036C98D /* libGPUImage.a */,
-				A4E7040315BB183F0036C98D /* GPUImageTests.octest */,
+				A4E7047E15BB1B0C0036C98D /* libGPUImage.a */,
+				A4E7048015BB1B0C0036C98D /* GPUImageTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,7 +130,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A4E7040515BB18760036C98D /* PBXTargetDependency */,
 			);
 			name = FilterKit;
 			productName = FilterKit;
@@ -167,7 +157,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A4E703F815BB183F0036C98D /* Products */;
+					ProductGroup = A4E7047815BB1B0C0036C98D /* Products */;
 					ProjectRef = A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */;
 				},
 			);
@@ -179,18 +169,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A4E7040115BB183F0036C98D /* libGPUImage.a */ = {
+		A4E7047E15BB1B0C0036C98D /* libGPUImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libGPUImage.a;
-			remoteRef = A4E7040015BB183F0036C98D /* PBXContainerItemProxy */;
+			remoteRef = A4E7047D15BB1B0C0036C98D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A4E7040315BB183F0036C98D /* GPUImageTests.octest */ = {
+		A4E7048015BB1B0C0036C98D /* GPUImageTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = GPUImageTests.octest;
-			remoteRef = A4E7040215BB183F0036C98D /* PBXContainerItemProxy */;
+			remoteRef = A4E7047F15BB1B0C0036C98D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -205,14 +195,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A4E7040515BB18760036C98D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GPUImage;
-			targetProxy = A4E7040415BB18760036C98D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A4E703F215BB18120036C98D /* Debug */ = {
@@ -265,6 +247,7 @@
 				DSTROOT = /tmp/FilterKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterKit/FilterKit-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -277,6 +260,7 @@
 				DSTROOT = /tmp/FilterKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterKit/FilterKit-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -302,6 +286,7 @@
 				A4E703F615BB18120036C98D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
