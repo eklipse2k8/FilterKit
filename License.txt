@@ -1,13 +1,3 @@
-FilterKit
-=========
-
-iOS Framework for easily adding post-processed image filters to your app.
-
-Requires: iOS 4.0+ device with OpenGL ES 2.0+ support. (No original iPhone or iPhone 3G support.)
-
-License
-=======
-
 "FilterKit" and "FilterKit Builder" are licensed under the BSD license.
 
 Copyright (c) 2012 Matt Jarjoura, Mohammed Jisrawi, Scott Tran, and Justin Zhang.
@@ -31,4 +21,3 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
