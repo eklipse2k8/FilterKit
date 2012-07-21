@@ -52,7 +52,11 @@
 
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor blackColor].CGColor;
-    self.filterMask.frame = CGRectMake(0, 0, 160, self.view.frame.size.height);
+    self.filterMask.frame = CGRectMake(0, 0, 400, 1000);
+    self.filterMask.anchorPoint = CGPointMake(1.0, 1.0);
+    self.filterMask.position = CGPointMake(0, imageFrame.size.height);
+
+//    [self.view.layer addSublayer:self.filterMask];
     self.filteredImage.layer.mask = filterMask;
     
     //    FKBlackWhiteFilter *bwFilter = [[FKBlackWhiteFilter alloc] init];
@@ -76,13 +80,27 @@
 
 - (void)didDragViewPort:(UIPanGestureRecognizer *)gestureRecognizer
 {
-
-    CGPoint currentTranslation = [gestureRecognizer translationInView:self.view];
-    
-    [CATransaction begin];
-    [CATransaction setAnimationDuration:0.0];
-    self.filterMask.transform = CATransform3DMakeTranslation(currentTranslation.x, currentTranslation.y, 0.0);
-    [CATransaction commit];
+    if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
+       gestureRecognizer.state == UIGestureRecognizerStateCancelled){
+        
+        
+        
+    }else{
+        CGPoint currentTranslation = [gestureRecognizer translationInView:self.view];
+        
+        //    CATransform3D transform = CATransform3DMakeTranslation(currentTranslation.x, currentTranslation.y, 0.0);
+        
+        CGFloat offset = currentTranslation.y/200;
+        
+        CGFloat angle = MAX(0.0, MIN(M_PI_2*offset, M_PI_2));
+        
+        CATransform3D transform = CATransform3DMakeRotation(angle, 0, 0, 1.0);
+        
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:0.0];
+        self.filterMask.transform = transform;
+        [CATransaction commit];
+    }
 }
 
 @end
