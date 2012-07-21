@@ -24,6 +24,7 @@
     [button setTitle:NSLocalizedString(@"Show Picker", @"") forState:UIControlStateNormal];
     [button addTarget:self action:@selector(showPicker:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)showPicker:(id)sender
