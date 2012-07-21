@@ -7,6 +7,7 @@
 //
 
 #import "FKBlackWhiteFilter.h"
+#import "FKGPUFilterGroup.h"
 
 @implementation FKBlackWhiteFilter
 
@@ -15,6 +16,9 @@
     self = [super init];
     if (!self)
         return nil;
+    
+    FKGPUFilterGroup *filter = [[FKGPUFilterGroup alloc] init];
+    [self addFilterToChain:filter];
     
     return self;
 }

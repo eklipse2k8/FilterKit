@@ -14,10 +14,10 @@
 
 @implementation FKImageView {
     @private
-    
+    UIImageView *_imageView;
 }
 
-@synthesize image = _image;
+//@synthesize image = _image;
 @synthesize filterChain = _filterChain;
 @synthesize filterApplied = _filterApplied;
 
@@ -27,12 +27,31 @@
     if (!self)
         return nil;
     
+    _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    [self addSubview:_imageView];
+    //self.layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5f].CGColor;
+    
     return self;
+}
+
+- (void)layoutSubviews
+{
+    _imageView.frame = self.bounds;
 }
 
 - (void)processFilter
 {
     
+}
+
+- (void)setImage:(UIImage *)image
+{
+    _imageView.image = image;
+}
+
+- (UIImage *)image
+{
+    return _imageView.image;
 }
 
 @end

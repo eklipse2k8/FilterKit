@@ -11,6 +11,7 @@
 		A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1315BB222F00D675BC /* OpenGLES.framework */; };
 		A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1415BB222F00D675BC /* QuartzCore.framework */; };
 		A4528F1815BB223C00D675BC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1715BB223C00D675BC /* CoreMedia.framework */; };
+		A4528F4015BB54AA00D675BC /* mean_cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A4528F3F15BB54AA00D675BC /* mean_cat.jpg */; };
 		A4E7041715BB19210036C98D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041615BB19210036C98D /* UIKit.framework */; };
 		A4E7041915BB19210036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041815BB19210036C98D /* Foundation.framework */; };
 		A4E7041B15BB19210036C98D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7041A15BB19210036C98D /* CoreGraphics.framework */; };
@@ -42,6 +43,7 @@
 		A4528F1315BB222F00D675BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A4528F1415BB222F00D675BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4528F1715BB223C00D675BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A4528F3F15BB54AA00D675BC /* mean_cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mean_cat.jpg; sourceTree = "<group>"; };
 		A4E7041215BB19210036C98D /* FilterDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilterDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E7041615BB19210036C98D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A4E7041815BB19210036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +125,7 @@
 		A4E7041D15BB19210036C98D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4528F3F15BB54AA00D675BC /* mean_cat.jpg */,
 				A4E7041E15BB19210036C98D /* FilterDemoApp-Info.plist */,
 				A4E7041F15BB19210036C98D /* InfoPlist.strings */,
 				A4E7042215BB19210036C98D /* main.m */,
@@ -209,6 +212,7 @@
 			files = (
 				A4E7042115BB19210036C98D /* InfoPlist.strings in Resources */,
 				A4E7042D15BB19210036C98D /* ViewController.xib in Resources */,
+				A4528F4015BB54AA00D675BC /* mean_cat.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

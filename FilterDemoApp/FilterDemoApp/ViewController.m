@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "GPUImagePicture.h"
-#import "FilterKit.h"
+#import "FKImageView.h"
+#import "FKBlackWhiteFilter.h"
 
 @interface ViewController ()
 
@@ -21,12 +21,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    FKImageView *image = [[FKImageView alloc] initWithFrame:CGRectMake(10, 10, 300, 300)];
+    image.image = [UIImage imageNamed:@"mean_cat.jpg"];
+    [self.view addSubview:image];
     
-    FilterKit *fk = [[FilterKit alloc] init];
-    NSLog(@"%@", fk);
+    FKBlackWhiteFilter *bwFilter = [[FKBlackWhiteFilter alloc] init];
+    image.filterChain = bwFilter;
     
-    GPUImagePicture *ip = [[GPUImagePicture alloc] init];
-    NSLog(@"%@", ip);
 }
 
 - (void)didReceiveMemoryWarning
