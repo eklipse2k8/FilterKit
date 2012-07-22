@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8164ECA415BBAB8C0076BF0B /* lightleak-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */; };
+		8164ECA515BBAB8C0076BF0B /* lightleak-2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */; };
 		A4528F1215BB212500D675BC /* libFilterKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7043F15BB193F0036C98D /* libFilterKit.a */; };
 		A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1315BB222F00D675BC /* OpenGLES.framework */; };
 		A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1415BB222F00D675BC /* QuartzCore.framework */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "lightleak-1.jpg"; path = "../../../../FilterKit/FilterKit/lightleak-1.jpg"; sourceTree = "<group>"; };
+		8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "lightleak-2.JPG"; path = "../../../../FilterKit/FilterKit/lightleak-2.JPG"; sourceTree = "<group>"; };
 		A4528F1315BB222F00D675BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A4528F1415BB222F00D675BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4528F1715BB223C00D675BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				D09374A615BB845000719CF0 /* disk@2x.png */,
+				8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */,
+				8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */,
 				D063456315BB59330023A18B /* unfiltered@2x.jpg */,
 			);
 			path = images;
@@ -249,6 +255,8 @@
 				E44F2F0E15BB5AA800B4DDA7 /* cat_burger.jpg in Resources */,
 				E44F2F1015BB629200B4DDA7 /* overlay.png in Resources */,
 				D09374A715BB845000719CF0 /* disk@2x.png in Resources */,
+				8164ECA415BBAB8C0076BF0B /* lightleak-1.jpg in Resources */,
+				8164ECA515BBAB8C0076BF0B /* lightleak-2.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
