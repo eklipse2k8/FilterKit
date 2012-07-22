@@ -39,7 +39,7 @@
 
 - (NSString *)title
 {
-    return @"Black & White";
+    return @"Sepia";
 }
 
 - (NSString *)localizedTitle

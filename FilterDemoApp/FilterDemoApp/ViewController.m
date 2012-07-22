@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "FKImagePickerController.h"
+#import "FKFilterPickerController.h"
 
 @interface ViewController ()
 
@@ -16,7 +16,7 @@
 @implementation ViewController
 
 - (void)viewDidLoad
-{
+{    
     [super viewDidLoad];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -29,7 +29,7 @@
 
 - (void)showPicker:(id)sender
 {
-    FKImagePickerController *imagePickerController = [[FKImagePickerController alloc] initWithNibName:nil bundle:nil];
+    FKFilterPickerController *imagePickerController = [[FKFilterPickerController alloc] initWithNibName:nil bundle:nil];
     [self presentModalViewController:imagePickerController animated:YES];
 }
 

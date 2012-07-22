@@ -1,18 +1,17 @@
 //
-//  FKImagePickerController.m
-//  FilterDemoApp
+//  FKFilterPickerController.m
+//  FilterKit
 //
 //  Created by Mohammed Jisrawi on 7/21/12.
 //  Copyright (c) 2012 iOS Dev Camp 2012. All rights reserved.
 //
 
-#import "FKImagePickerController.h"
+#import "FKFilterPickerController.h"
 #import "FKImageView.h"
 #import "FKGPUFilterGroup.h"
 #import <QuartzCore/QuartzCore.h>
-#import "FKBlackWhiteFilter.h"
-#import "FKLightLeakFilter.h"
 #import "FKFilters.h"
+#import "FKFilterChain.h"
 
 #define RADIANS(degrees) (degrees / 180.0 * M_PI)
 
@@ -22,7 +21,7 @@
 #define MASK_NEXT_TRANSFORM CATransform3DMakeRotation(-FILTER_STEP_ANGLE, 0, 0, 1.0);
 #define MASK_PREV_TRANSFORM CATransform3DMakeRotation(FILTER_STEP_ANGLE, 0, 0, 1.0);
 
-@interface FKImagePickerController ()
+@interface FKFilterPickerController ()
 @property(nonatomic, strong) FKImageView *imageView;
 @property(nonatomic, strong) FKImageView *filteredImageView;
 @property(nonatomic, strong) UIImageView *disk;
@@ -37,7 +36,7 @@
 @end
 
 
-@implementation FKImagePickerController {
+@implementation FKFilterPickerController {
     NSUInteger _currentFilterIndex;
 }
 
@@ -53,22 +52,22 @@
         [self.filters addObject:[NSNull null]];
         
         _currentFilterIndex = 0;
-
+        
         NSUInteger next = 0;
         NSString *filterListString = FKFilterList[next++];
         while (filterListString != nil) {
             [self.filters addObject:NSClassFromString(filterListString)];
             filterListString = FKFilterList[next++];
         }
-                
+        
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
         self.view.clipsToBounds = YES;
-//        
-//        
-//        UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeViewPort:)];
-//        [self.view addGestureRecognizer:swipeGestureRecognizer];
-//        
+        //        
+        //        
+        //        UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeViewPort:)];
+        //        [self.view addGestureRecognizer:swipeGestureRecognizer];
+        //        
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragViewPort:)];
         [self.view addGestureRecognizer:panGestureRecognizer];
     }
@@ -87,14 +86,14 @@
     
     self.filteredImageView = [[FKImageView alloc] initWithFrame:imageFrame];
     [self.view addSubview:self.filteredImageView];
-
+    
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor redColor].CGColor;
-    self.filterMask.frame = CGRectMake(DISK_CENTER_X, 0, 1000, imageFrame.size.height+10);
+    self.filterMask.frame = CGRectMake(DISK_CENTER_X, 0, 1000, imageFrame.size.height+20);
     self.filterMask.anchorPoint = CGPointMake(0.0, 0.5);
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.filteredImageView.layer.mask = filterMask;
-//    [self.view.layer addSublayer:self.filterMask];
+    //    [self.view.layer addSublayer:self.filterMask];
     
     self.disk = [[UIImageView alloc] initWithFrame:CGRectMake(DISK_CENTER_X, imageFrame.origin.y-(2000-imageFrame.size.height)/2, 1000, 2000)];
     self.disk.image = [UIImage imageNamed:@"disk.png"];
@@ -149,15 +148,15 @@
     CGFloat offset = MAX(-1.0, MIN((multiplier*currentTranslation.y)/DRAG_DISTANCE, 1.0));
     
     if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
-
+        
         if(offset < 0)
             [self preparePreviousFilter];
         else
             [self prepareNextFilter];
         
     }else if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
-       gestureRecognizer.state == UIGestureRecognizerStateCancelled){
-            
+             gestureRecognizer.state == UIGestureRecognizerStateCancelled){
+        
         [UIView animateWithDuration:0.2 animations:^{
             if(fabs(offset) > 0.5){
                 if(offset < 0){
@@ -168,22 +167,27 @@
                     self.disk.layer.transform = MASK_PREV_TRANSFORM;
                 }
             }else{
-                self.filterMask.transform = MASK_NEXT_TRANSFORM;
-                self.disk.layer.transform = CATransform3DIdentity;
+                if(offset < 0){
+                    self.filterMask.transform = MASK_PREV_TRANSFORM;
+                    self.disk.layer.transform = CATransform3DIdentity;
+                }else{
+                    self.filterMask.transform = MASK_NEXT_TRANSFORM;
+                    self.disk.layer.transform = CATransform3DIdentity;
+                }
             }
         }completion:^(BOOL finished){
             if(fabs(offset) > 0.5){            
                 if(offset < 0)
-                    [self swapToNextfilter];
-                else
                     [self swapToPreviousfilter];
+                else
+                    [self swapToNextfilter];
             }
         }];
         
     }else{
         
         CGFloat angle = MAX(-FILTER_STEP_ANGLE, MIN(FILTER_STEP_ANGLE*offset, FILTER_STEP_ANGLE));
-                        
+        
         [CATransaction begin];
         [CATransaction setAnimationDuration:0.0];
         if(offset < 0)
@@ -229,22 +233,24 @@
 }
 
 - (void)prepareFilterForIndex:(NSUInteger)index
-{
-    NSLog(@"preparing: %d", index);
-    
-    Class filter = (Class)[self.filters objectAtIndex:_currentFilterIndex];
+{    
+    Class filter = (Class)[self.filters objectAtIndex:index];
     
     self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
     
-    if(![filter isKindOfClass:[NSNull class]]){    
+    if(![filter isKindOfClass:[NSNull class]]){  
         self.filteredImageView.filterChain = [[filter alloc] init];
         [self.filteredImageView processFilterChain];
+        
+        NSLog(@"preparing filter %d: %@", index, [self.filteredImageView.filterChain title]);
+    }else{
+        NSLog(@"preparing filter %d: unfiltered image", index);
     }
 }
 
 - (void)swapToNextfilter
 {    
-    NSLog(@"swapping");
+    NSLog(@"swapping to next");
     if(_currentFilterIndex == [self.filters count]-1) 
         _currentFilterIndex = 0;
     else
@@ -262,21 +268,22 @@
 
 - (void)swapToPreviousfilter
 {
-    NSLog(@"swapping");
-
+    NSLog(@"swapping to prev");
+    
     if(_currentFilterIndex == 0)
         _currentFilterIndex = [self.filters count]-1;
     else
         _currentFilterIndex--;
     
     self.imageView.image = self.filteredImageView.image;
-
+    
     //reset disk & mask
     [CATransaction begin];
     [CATransaction setAnimationDuration:0.0];
-    self.filterMask.transform = MASK_NEXT_TRANSFORM;
+    self.filterMask.transform = MASK_PREV_TRANSFORM;
     self.disk.layer.transform = CATransform3DIdentity;
     [CATransaction commit];
 }
 
 @end
+
