@@ -15,9 +15,8 @@
 		A4528F2B15BB412700D675BC /* FKGPUFilterGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2A15BB412700D675BC /* FKGPUFilterGroup.m */; };
 		A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2D15BB413400D675BC /* FKMaskFilter.m */; };
 		A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */; };
+		A4528F9415BB814200D675BC /* FKCropAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F9315BB814200D675BC /* FKCropAction.m */; };
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
-		A4E703EF15BB18120036C98D /* FilterKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A4E703EE15BB18120036C98D /* FilterKit.h */; };
-		A4E703F115BB18120036C98D /* FilterKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E703F015BB18120036C98D /* FilterKit.m */; };
 		A4E7048015BB1B0C0036C98F /* FKOverlayFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +44,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				A4E703EF15BB18120036C98D /* FilterKit.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,11 +65,12 @@
 		A4528F3215BB418400D675BC /* FKFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FKFilter.h; sourceTree = "<group>"; };
 		A4528F3415BB437C00D675BC /* FKBlackWhiteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKBlackWhiteFilter.h; path = Filters/FKBlackWhiteFilter.h; sourceTree = "<group>"; };
 		A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKBlackWhiteFilter.m; path = Filters/FKBlackWhiteFilter.m; sourceTree = "<group>"; };
+		A4528F9215BB814200D675BC /* FKCropAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKCropAction.h; path = Actions/FKCropAction.h; sourceTree = "<group>"; };
+		A4528F9315BB814200D675BC /* FKCropAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKCropAction.m; path = Actions/FKCropAction.m; sourceTree = "<group>"; };
+		A4528F9A15BB816000D675BC /* FKAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FKAction.h; sourceTree = "<group>"; };
 		A4E703E615BB18120036C98D /* libFilterKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFilterKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E703E915BB18120036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FilterKit-Prefix.pch"; sourceTree = "<group>"; };
-		A4E703EE15BB18120036C98D /* FilterKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterKit.h; sourceTree = "<group>"; };
-		A4E703F015BB18120036C98D /* FilterKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterKit.m; sourceTree = "<group>"; };
 		A4E703F715BB183F0036C98D /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = ../lib/GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKOverlayFilter.m; sourceTree = "<group>"; };
 		A4E7048015BB1B0C0036C990 /* FKOverlayFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKOverlayFilter.h; sourceTree = "<group>"; };
@@ -90,13 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A4528F3315BB435100D675BC /* CoreFilters */ = {
+		A4528F3315BB435100D675BC /* Filters */ = {
 			isa = PBXGroup;
 			children = (
 				A4528F3415BB437C00D675BC /* FKBlackWhiteFilter.h */,
 				A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */,
 			);
-			name = CoreFilters;
+			name = Filters;
+			sourceTree = "<group>";
+		};
+		A4528F9915BB814700D675BC /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				A4528F9215BB814200D675BC /* FKCropAction.h */,
+				A4528F9315BB814200D675BC /* FKCropAction.m */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 		A4E703DB15BB18120036C98D = {
@@ -129,11 +137,8 @@
 		A4E703EB15BB18120036C98D /* FilterKit */ = {
 			isa = PBXGroup;
 			children = (
-				A4E7048015BB1B0C0036C990 /* FKOverlayFilter.h */,
-				A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */,
-				A4528F3315BB435100D675BC /* CoreFilters */,
-				A4E703EE15BB18120036C98D /* FilterKit.h */,
-				A4E703F015BB18120036C98D /* FilterKit.m */,
+				A4528F9915BB814700D675BC /* Actions */,
+				A4528F3315BB435100D675BC /* Filters */,
 				A4528F1915BB34A500D675BC /* FKImagePickerController.h */,
 				A4528F1A15BB34A500D675BC /* FKImagePickerController.m */,
 				A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */,
@@ -146,7 +151,10 @@
 				A4528F2A15BB412700D675BC /* FKGPUFilterGroup.m */,
 				A4528F2C15BB413400D675BC /* FKMaskFilter.h */,
 				A4528F2D15BB413400D675BC /* FKMaskFilter.m */,
+				A4E7048015BB1B0C0036C990 /* FKOverlayFilter.h */,
+				A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */,
 				A4528F3215BB418400D675BC /* FKFilter.h */,
+				A4528F9A15BB816000D675BC /* FKAction.h */,
 			);
 			path = FilterKit;
 			sourceTree = "<group>";
@@ -243,7 +251,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4E703F115BB18120036C98D /* FilterKit.m in Sources */,
 				A4528F1B15BB34A500D675BC /* FKImagePickerController.m in Sources */,
 				A4528F2215BB35AE00D675BC /* FKFilterPictureController.m in Sources */,
 				A4528F2515BB35C400D675BC /* FKImageView.m in Sources */,
@@ -252,6 +259,7 @@
 				A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */,
 				A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */,
 				A4E7048015BB1B0C0036C98F /* FKOverlayFilter.m in Sources */,
+				A4528F9415BB814200D675BC /* FKCropAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
