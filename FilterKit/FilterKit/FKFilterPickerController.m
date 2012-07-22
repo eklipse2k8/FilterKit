@@ -23,14 +23,21 @@
 
 @interface FKFilterPickerController ()
 @property(nonatomic, strong) FKImageView *imageView, *filteredImageView;
+@property(nonatomic, strong) UIView *chrome;
 @property(nonatomic, strong) CALayer *disk, *filterMask;
+@property(nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property(nonatomic, strong) NSMutableArray *filters;
+@property(nonatomic, strong) NSMutableDictionary *filteredImages;
+@property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 
-- (void)didDragViewPort:(UIPanGestureRecognizer *)gestureRecognizer;
+- (void)tappedCancel:(id)sender;
+
+- (void)didDragDisk:(UIPanGestureRecognizer *)gestureRecognizer;
 
 - (void)didEndSwipingWithOffset:(CGFloat)offset;
 - (void)didEndDraggingWithOffset:(CGFloat)offset;
 
+- (void)prepareAllFilters;
 - (void)preparePreviousFilter;
 - (void)prepareNextFilter;
 - (void)prepareFilterForIndex:(NSUInteger)index;
@@ -43,9 +50,10 @@
     NSUInteger _currentFilterIndex;
 }
 
-@synthesize imageView, filteredImageView, disk;
-@synthesize filterMask;
-@synthesize filters;
+@synthesize imageView, filteredImageView, activityIndicator, chrome;
+@synthesize disk, filterMask;
+@synthesize filters, filteredImages;
+@synthesize panGestureRecognizer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,16 +70,13 @@
             [self.filters addObject:NSClassFromString(filterListString)];
             filterListString = FKFilterList[next++];
         }
-        
+                
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
         self.view.clipsToBounds = YES;
-        
-        UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeViewPort:)];
-        [self.view addGestureRecognizer:swipeGestureRecognizer];
-  
-        UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragViewPort:)];
-        [self.view addGestureRecognizer:panGestureRecognizer];
+
+        self.panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragDisk:)];
+        [self.view addGestureRecognizer:self.panGestureRecognizer];
     }
     return self;
 }
@@ -80,7 +85,7 @@
 {
     [super viewDidLoad];
     
-    CGRect imageFrame = CGRectMake(0, 80, 320, 320);
+    CGRect imageFrame = CGRectMake(0, 60, 320, 320);
     
     self.imageView = [[FKImageView alloc] initWithFrame:imageFrame];
     self.imageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
@@ -97,23 +102,59 @@
     self.filteredImageView.layer.mask = filterMask;
 //    [self.view.layer addSublayer:self.filterMask];
     
+    UIImageView *viewPort = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cameraViewPort.png"]];
+    viewPort.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:viewPort];
+    
     self.disk = [CALayer layer];
     self.disk.frame = CGRectMake(DISK_CENTER_X, imageFrame.origin.y-(2000-imageFrame.size.height)/2, 1000, 2000);
     self.disk.contents = (id)[UIImage imageNamed:@"disk.png"].CGImage;
     self.disk.anchorPoint = CGPointMake(0.0, 0.5);
     [self.view.layer addSublayer:disk];
+    
+    self.chrome = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIImageView *barShadow = [[UIImageView alloc] initWithFrame:CGRectMake(0, 44.0, self.view.frame.size.width, 11.0)];
+    [barShadow setImage:[UIImage imageNamed:@"navBarShadow.png"]];
+    [self.chrome addSubview:barShadow];
+    
+    //nav bar setup
+    UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0)];
+    [navBar setBackgroundImage:[UIImage imageNamed:@"navBar.png"] forBarMetrics:UIBarMetricsDefault];
+    [navBar pushNavigationItem:[[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"Choose Filter", @"")] animated:NO];
+    [navBar.topItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleDone target:self action:@selector(tappedCancel:)]];
+    [self.chrome addSubview:navBar];
+    
+    UIView *bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-80, self.view.frame.size.width, 80)];
+    bottomBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bottomBar.png"]];
+    bottomBar.opaque = NO;
+    [self.chrome addSubview:bottomBar];
+    
+    [self.view addSubview:self.chrome];
+    
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activityIndicator.center = self.imageView.center;
+    [activityIndicator startAnimating];
+    [self.view addSubview:activityIndicator]; 
+    
+    [self.panGestureRecognizer setEnabled:NO];
+    [self.imageView setHidden:YES];
+    [self.filteredImageView setHidden:YES];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (void)viewDidAppear:(BOOL)animated
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    [self prepareAllFilters];
 }
-
 
 #pragma mark - 
 #pragma mark - User Interaction
 
-- (void)didDragViewPort:(UIPanGestureRecognizer *)gestureRecognizer
+- (void)tappedCancel:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)didDragDisk:(UIPanGestureRecognizer *)gestureRecognizer
 {
     CGPoint currentTranslation = [gestureRecognizer translationInView:self.view];
     
@@ -213,6 +254,24 @@
 #pragma mark - 
 #pragma mark - Filter Preparation & Application
 
+- (void)prepareAllFilters
+{
+    self.filteredImages = [[NSMutableDictionary alloc] init];
+    [self.filters enumerateObjectsUsingBlock:^(Class filter, NSUInteger idx, BOOL *stop){
+        if(![filter isKindOfClass:[NSNull class]]){
+            self.filteredImageView.image = [UIImage imageNamed:@"unfiltered@2x.jpg"];
+            self.filteredImageView.filterChain = [[filter alloc] init];
+            [self.filteredImageView processFilterChain];
+            
+            [self.filteredImages setObject:self.filteredImageView.image forKey:[self.filteredImageView.filterChain title]];
+        }
+    }];
+    
+    [activityIndicator removeFromSuperview];
+    [self.imageView setHidden:NO];
+    [self.filteredImageView setHidden:NO];
+}
+
 - (void)preparePreviousFilter
 {    
     [CATransaction begin];
@@ -220,7 +279,7 @@
     self.filterMask.transform = MASK_PREV_TRANSFORM;
     [CATransaction commit];
     
-    NSLog(@"prev");
+//    NSLog(@"prev");
     if(_currentFilterIndex == 0)
         [self prepareFilterForIndex:[self.filters count]-1];
     else
@@ -234,7 +293,7 @@
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     [CATransaction commit];
     
-    NSLog(@"next");
+//    NSLog(@"next");
     if(_currentFilterIndex == [self.filters count]-1)
         [self prepareFilterForIndex:0];
     else
@@ -248,18 +307,14 @@
     self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
     
     if(![filter isKindOfClass:[NSNull class]]){  
-        self.filteredImageView.filterChain = [[filter alloc] init];
-        [self.filteredImageView processFilterChain];
-        
-        NSLog(@"preparing filter %d: %@", index, [self.filteredImageView.filterChain title]);
-    }else{
-        NSLog(@"preparing filter %d: unfiltered image", index);
+        FKFilterChain *filterChain = [filter alloc];
+        self.filteredImageView.image = [self.filteredImages objectForKey:[filterChain title]];
     }
 }
 
 - (void)swapToNextfilter
 {    
-    NSLog(@"swapping to next");
+//    NSLog(@"swapping to next");
     if(_currentFilterIndex == [self.filters count]-1) 
         _currentFilterIndex = 0;
     else
@@ -277,7 +332,7 @@
 
 - (void)swapToPreviousfilter
 {
-    NSLog(@"swapping to prev");
+//    NSLog(@"swapping to prev");
     
     if(_currentFilterIndex == 0)
         _currentFilterIndex = [self.filters count]-1;
