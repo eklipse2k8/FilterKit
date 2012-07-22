@@ -11,6 +11,7 @@
 		810BD83315BBC4B4005AECAE /* FKSepia.m in Sources */ = {isa = PBXBuildFile; fileRef = 810BD83215BBC4B4005AECAE /* FKSepia.m */; };
 		8164EC7615BB89B30076BF0B /* FKLightLeakFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8164EC7515BB89B30076BF0B /* FKLightLeakFilter.m */; };
 		81C5440215BC6E70009624D5 /* FKYellowCake.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C5440115BC6E70009624D5 /* FKYellowCake.m */; };
+		81C5440815BC6FFA009624D5 /* FKToon.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C5440715BC6FFA009624D5 /* FKToon.m */; };
 		A44DAC8515BBB42900789D73 /* FKFilterPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A44DAC8415BBB42900789D73 /* FKFilterPickerController.m */; };
 		A4528F0415BB210100D675BC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7047E15BB1B0C0036C98D /* libGPUImage.a */; };
 		A4528F2515BB35C400D675BC /* FKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2415BB35C400D675BC /* FKImageView.m */; };
@@ -72,6 +73,8 @@
 		8164EC7C15BB8B470076BF0B /* lightleak-2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lightleak-2.JPG"; sourceTree = "<group>"; };
 		81C5440015BC6E70009624D5 /* FKYellowCake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKYellowCake.h; path = Filters/FKYellowCake.h; sourceTree = "<group>"; };
 		81C5440115BC6E70009624D5 /* FKYellowCake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKYellowCake.m; path = Filters/FKYellowCake.m; sourceTree = "<group>"; };
+		81C5440615BC6FFA009624D5 /* FKToon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKToon.h; path = Filters/FKToon.h; sourceTree = "<group>"; };
+		81C5440715BC6FFA009624D5 /* FKToon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKToon.m; path = Filters/FKToon.m; sourceTree = "<group>"; };
 		A44DAC8315BBB42900789D73 /* FKFilterPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterPickerController.h; sourceTree = "<group>"; };
 		A44DAC8415BBB42900789D73 /* FKFilterPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterPickerController.m; sourceTree = "<group>"; };
 		A4528F2015BB35AE00D675BC /* FKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImagePickerController.h; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */,
 				81C5440015BC6E70009624D5 /* FKYellowCake.h */,
 				81C5440115BC6E70009624D5 /* FKYellowCake.m */,
+				81C5440615BC6FFA009624D5 /* FKToon.h */,
+				81C5440715BC6FFA009624D5 /* FKToon.m */,
 				810BD83115BBC4B4005AECAE /* FKSepia.h */,
 				810BD83215BBC4B4005AECAE /* FKSepia.m */,
 				810BD81B15BBBAAA005AECAE /* FKBlueValentine.h */,
@@ -302,6 +307,7 @@
 				810BD81D15BBBAAA005AECAE /* FKBlueValentine.m in Sources */,
 				810BD83315BBC4B4005AECAE /* FKSepia.m in Sources */,
 				81C5440215BC6E70009624D5 /* FKYellowCake.m in Sources */,
+				81C5440815BC6FFA009624D5 /* FKToon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

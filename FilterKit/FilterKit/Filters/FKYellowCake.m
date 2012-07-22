@@ -32,7 +32,7 @@
     [monoFilter setIntensity:0.2];
     
     GPUImageVignetteFilter *vigFilter = [[GPUImageVignetteFilter alloc] init];
-    [vigFilter setVignetteEnd:0.65];
+    [vigFilter setVignetteEnd:0.6];
     
     GPUImageExposureFilter *expoFilter = [[GPUImageExposureFilter alloc] init];
     [expoFilter setExposure:0.3];
