@@ -1,18 +1,18 @@
 //
-//  FKFilterPictureController.m
+//  FKImagePickerController.m
 //  FilterKit
 //
 //  Created by Matt Jarjoura on 7/21/12.
 //  Copyright (c) 2012 iOS Dev Camp 2012. All rights reserved.
 //
 
-#import "FKFilterPictureController.h"
+#import "FKImagePickerController.h"
 
-@interface FKFilterPictureController ()
+@interface FKImagePickerController ()
 
 @end
 
-@implementation FKFilterPictureController
+@implementation FKImagePickerController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -19,7 +19,7 @@
 		A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */; };
 		A4528F9415BB814200D675BC /* FKCropAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F9315BB814200D675BC /* FKCropAction.m */; };
 		A4528FB315BBABD500D675BC /* FKFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528FB215BBABD500D675BC /* FKFilters.m */; };
-		A4528FCA15BBB2DC00D675BC /* FKFilterPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */; };
+		A4528FCA15BBB2DC00D675BC /* FKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2115BB35AE00D675BC /* FKImagePickerController.m */; };
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
 		A4E7048015BB1B0C0036C98F /* FKOverlayFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */; };
 /* End PBXBuildFile section */
@@ -69,10 +69,10 @@
 		8164EC7515BB89B30076BF0B /* FKLightLeakFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKLightLeakFilter.m; path = Filters/FKLightLeakFilter.m; sourceTree = "<group>"; };
 		8164EC7B15BB8B350076BF0B /* lightleak-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lightleak-1.jpg"; sourceTree = "<group>"; };
 		8164EC7C15BB8B470076BF0B /* lightleak-2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lightleak-2.JPG"; sourceTree = "<group>"; };
-		A44DAC8315BBB42900789D73 /* FKFilterPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FKFilterPickerController.h; sourceTree = "<group>"; };
+		A44DAC8315BBB42900789D73 /* FKFilterPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterPickerController.h; sourceTree = "<group>"; };
 		A44DAC8415BBB42900789D73 /* FKFilterPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterPickerController.m; sourceTree = "<group>"; };
-		A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterPictureController.h; sourceTree = "<group>"; };
-		A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterPictureController.m; sourceTree = "<group>"; };
+		A4528F2015BB35AE00D675BC /* FKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImagePickerController.h; sourceTree = "<group>"; };
+		A4528F2115BB35AE00D675BC /* FKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKImagePickerController.m; sourceTree = "<group>"; };
 		A4528F2315BB35C400D675BC /* FKImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImageView.h; sourceTree = "<group>"; };
 		A4528F2415BB35C400D675BC /* FKImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKImageView.m; sourceTree = "<group>"; };
 		A4528F2615BB3D6E00D675BC /* FKFilterChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterChain.h; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 			children = (
 				A4528F9915BB814700D675BC /* Actions */,
 				A4528F3315BB435100D675BC /* Filters */,
-				A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */,
-				A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */,
+				A4528F2015BB35AE00D675BC /* FKImagePickerController.h */,
+				A4528F2115BB35AE00D675BC /* FKImagePickerController.m */,
 				A44DAC8315BBB42900789D73 /* FKFilterPickerController.h */,
 				A44DAC8415BBB42900789D73 /* FKFilterPickerController.m */,
 				A4528F2315BB35C400D675BC /* FKImageView.h */,
@@ -292,7 +292,7 @@
 				A4528F9415BB814200D675BC /* FKCropAction.m in Sources */,
 				8164EC7615BB89B30076BF0B /* FKLightLeakFilter.m in Sources */,
 				A4528FB315BBABD500D675BC /* FKFilters.m in Sources */,
-				A4528FCA15BBB2DC00D675BC /* FKFilterPictureController.m in Sources */,
+				A4528FCA15BBB2DC00D675BC /* FKImagePickerController.m in Sources */,
 				A44DAC8515BBB42900789D73 /* FKFilterPickerController.m in Sources */,
 				810BD81D15BBBAAA005AECAE /* FKBlueValentine.m in Sources */,
 				810BD83315BBC4B4005AECAE /* FKSepia.m in Sources */,
