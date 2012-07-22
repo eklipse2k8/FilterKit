@@ -69,11 +69,12 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    FKCropAction *crop = [[FKCropAction alloc] init];
-    CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
-    crop.origin = cropRect.origin;
-    crop.cropSize = cropRect.size;
-    UIImage *image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+//    FKCropAction *crop = [[FKCropAction alloc] init];
+//    CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
+//    crop.origin = cropRect.origin;
+//    crop.cropSize = cropRect.size;
+//    UIImage *image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     _filterPicker = [[FKFilterPickerController alloc] initWithImage:image];
     _filterPicker.view.frame = CGRectOffset(_filterPicker.view.frame, 0, -20);
