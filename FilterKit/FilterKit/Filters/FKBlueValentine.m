@@ -38,18 +38,17 @@
     [monoFilter setIntensity:0.2];
     
     GPUImageVignetteFilter *vigFilter = [[GPUImageVignetteFilter alloc] init];
-    [vigFilter setVignetteEnd:0.8];
+    [vigFilter setVignetteEnd:0.7];
     
     GPUImageExposureFilter *expoFilter = [[GPUImageExposureFilter alloc] init];
     [expoFilter setExposure:0.3];
     
-    
-    
-    [filter addGPUFilter:expoFilter];
-    [filter addGPUFilter:monoFilter];
-    [filter addGPUFilter:saturFilter];
+ 
+//    [filter addGPUFilter:expoFilter];
+//    [filter addGPUFilter:monoFilter];
+//    [filter addGPUFilter:saturFilter];
     [filter addGPUFilter:vigFilter];
-    
+//    
     
     
     return self;
@@ -62,12 +61,12 @@
 
 - (NSString *)title
 {
-    return @"Black & White";
+    return @"Blue Valentine";
 }
 
 - (NSString *)localizedTitle
 {
-    return NSLocalizedString(@"Black & White", @"Localized title for default filter chain.");
+    return NSLocalizedString(@"Blue Valentine", @"Localized title for default filter chain.");
 }
 
 
