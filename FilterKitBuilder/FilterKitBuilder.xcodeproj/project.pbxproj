@@ -19,6 +19,14 @@
 		E44F2F8515BB72BC00B4DDA7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44F2F8415BB72BC00B4DDA7 /* CoreMedia.framework */; };
 		E44F2F8715BB72C400B4DDA7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44F2F8615BB72C400B4DDA7 /* OpenGLES.framework */; };
 		E44F2F8915BB72D700B4DDA7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44F2F8815BB72D700B4DDA7 /* QuartzCore.framework */; };
+		E44F2F8915BB72D700B4DDAC /* PreviewFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDAB /* PreviewFilterController.m */; };
+		E44F2F8915BB72D700B4DDAF /* garden.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDAE /* garden.jpg */; };
+		E44F2F8915BB72D700B4DDB4 /* FKSaturationFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDB3 /* FKSaturationFilterBuilder.m */; };
+		E44F2F8915BB72D700B4DDBB /* FKFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDBA /* FKFilterBuilder.m */; };
+		E44F2F8915BB72D700B4DDBE /* FKContrastFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDBD /* FKContrastFilterBuilder.m */; };
+		E44F2F8915BB72D700B4DDC1 /* FKSharpenFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDC0 /* FKSharpenFilterBuilder.m */; };
+		E44F2F8915BB72D700B4DDC4 /* FKVignetteFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDC3 /* FKVignetteFilterBuilder.m */; };
+		E44F2F8915BB72D700B4DDCA /* StyleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDC9 /* StyleFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +56,21 @@
 		E44F2F8415BB72BC00B4DDA7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E44F2F8615BB72C400B4DDA7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E44F2F8815BB72D700B4DDA7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E44F2F8915BB72D700B4DDAB /* PreviewFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewFilterController.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDAD /* PreviewFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewFilterController.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDAE /* garden.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = garden.jpg; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDB3 /* FKSaturationFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKSaturationFilterBuilder.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDB5 /* FKSaturationFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKSaturationFilterBuilder.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDBA /* FKFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilterBuilder.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDBC /* FKFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterBuilder.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDBD /* FKContrastFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKContrastFilterBuilder.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDBF /* FKContrastFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKContrastFilterBuilder.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDC0 /* FKSharpenFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKSharpenFilterBuilder.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDC2 /* FKSharpenFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKSharpenFilterBuilder.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDC3 /* FKVignetteFilterBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKVignetteFilterBuilder.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDC5 /* FKVignetteFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKVignetteFilterBuilder.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDC9 /* StyleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleFactory.m; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDCB /* StyleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleFactory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +129,16 @@
 		E44F2F4B15BB716700B4DDA7 /* FilterKitBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				E44F2F8915BB72D700B4DDCB /* StyleFactory.h */,
+				E44F2F8915BB72D700B4DDC9 /* StyleFactory.m */,
+				E44F2F8915BB72D700B4DDBC /* FKFilterBuilder.h */,
+				E44F2F8915BB72D700B4DDBA /* FKFilterBuilder.m */,
+				E44F2F8915BB72D700B4DDAD /* PreviewFilterController.h */,
+				E44F2F8915BB72D700B4DDAB /* PreviewFilterController.m */,
 				E44F2F5415BB716700B4DDA7 /* AppDelegate.h */,
 				E44F2F5515BB716700B4DDA7 /* AppDelegate.m */,
 				E44F2F4C15BB716700B4DDA7 /* Supporting Files */,
+				E44F2F8915BB72D700B4DDB9 /* Builder */,
 			);
 			path = FilterKitBuilder;
 			sourceTree = "<group>";
@@ -116,6 +146,7 @@
 		E44F2F4C15BB716700B4DDA7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E44F2F8915BB72D700B4DDAE /* garden.jpg */,
 				E44F2F4D15BB716700B4DDA7 /* FilterKitBuilder-Info.plist */,
 				E44F2F4E15BB716700B4DDA7 /* InfoPlist.strings */,
 				E44F2F5115BB716700B4DDA7 /* main.m */,
@@ -130,6 +161,21 @@
 				E44F2F7215BB723500B4DDA7 /* libFilterKit.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E44F2F8915BB72D700B4DDB9 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				E44F2F8915BB72D700B4DDC5 /* FKVignetteFilterBuilder.h */,
+				E44F2F8915BB72D700B4DDC3 /* FKVignetteFilterBuilder.m */,
+				E44F2F8915BB72D700B4DDC2 /* FKSharpenFilterBuilder.h */,
+				E44F2F8915BB72D700B4DDC0 /* FKSharpenFilterBuilder.m */,
+				E44F2F8915BB72D700B4DDBF /* FKContrastFilterBuilder.h */,
+				E44F2F8915BB72D700B4DDBD /* FKContrastFilterBuilder.m */,
+				E44F2F8915BB72D700B4DDB3 /* FKSaturationFilterBuilder.m */,
+				E44F2F8915BB72D700B4DDB5 /* FKSaturationFilterBuilder.h */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E44F2F5015BB716700B4DDA7 /* InfoPlist.strings in Resources */,
+				E44F2F8915BB72D700B4DDAF /* garden.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +258,13 @@
 			files = (
 				E44F2F5215BB716700B4DDA7 /* main.m in Sources */,
 				E44F2F5615BB716700B4DDA7 /* AppDelegate.m in Sources */,
+				E44F2F8915BB72D700B4DDAC /* PreviewFilterController.m in Sources */,
+				E44F2F8915BB72D700B4DDB4 /* FKSaturationFilterBuilder.m in Sources */,
+				E44F2F8915BB72D700B4DDBB /* FKFilterBuilder.m in Sources */,
+				E44F2F8915BB72D700B4DDBE /* FKContrastFilterBuilder.m in Sources */,
+				E44F2F8915BB72D700B4DDC1 /* FKSharpenFilterBuilder.m in Sources */,
+				E44F2F8915BB72D700B4DDC4 /* FKVignetteFilterBuilder.m in Sources */,
+				E44F2F8915BB72D700B4DDCA /* StyleFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,12 +334,14 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterKitBuilder/FilterKitBuilder-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../lib/GPUImage/**";
 				INFOPLIST_FILE = "FilterKitBuilder/FilterKitBuilder-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../lib/GPUImage/build/Release-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -295,12 +351,14 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FilterKitBuilder/FilterKitBuilder-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../lib/GPUImage/**";
 				INFOPLIST_FILE = "FilterKitBuilder/FilterKitBuilder-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../lib/GPUImage/build/Release-iphoneos\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
