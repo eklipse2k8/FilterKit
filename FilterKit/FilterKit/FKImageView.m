@@ -48,6 +48,7 @@
     [filters enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         id <FKFilter>filter = (id <FKFilter>)obj;
         image = [filter imageWithFilterAppliedWithImage:image];
+        NSParameterAssert(image != nil);
     }];
     
     self.image = image;
