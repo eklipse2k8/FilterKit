@@ -46,10 +46,16 @@
 @synthesize imageView, filteredImageView, disk;
 @synthesize filterMask;
 @synthesize filters;
+@synthesize image = _image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    return [self init];
+}
+
+- (id)init
+{
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
         self.filters = [[NSMutableArray alloc] init];
         [self.filters addObject:[NSNull null]];
@@ -83,7 +89,7 @@
     CGRect imageFrame = CGRectMake(0, 80, 320, 320);
     
     self.imageView = [[FKImageView alloc] initWithFrame:imageFrame];
-    self.imageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.imageView.image = self.image;
     [self.view addSubview:self.imageView];
     
     self.filteredImageView = [[FKImageView alloc] initWithFrame:imageFrame];
@@ -245,7 +251,7 @@
 {    
     Class filter = (Class)[self.filters objectAtIndex:index];
     
-    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.filteredImageView.image = self.image;
     
     if(![filter isKindOfClass:[NSNull class]]){  
         self.filteredImageView.filterChain = [[filter alloc] init];

@@ -97,11 +97,6 @@
 		A4E7040715BB19210036C98D = {
 			isa = PBXGroup;
 			children = (
-				A4528F4315BB5F6000D675BC /* AVFoundation.framework */,
-				A4528F4115BB5F5400D675BC /* CoreVideo.framework */,
-				A4528F1715BB223C00D675BC /* CoreMedia.framework */,
-				A4528F1315BB222F00D675BC /* OpenGLES.framework */,
-				A4528F1415BB222F00D675BC /* QuartzCore.framework */,
 				A4E7041C15BB19210036C98D /* FilterDemoApp */,
 				A4E7041515BB19210036C98D /* Frameworks */,
 				A4E7041315BB19210036C98D /* Products */,
@@ -120,6 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				A4E7043315BB193F0036C98D /* FilterKit.xcodeproj */,
+				A4528F4315BB5F6000D675BC /* AVFoundation.framework */,
+				A4528F4115BB5F5400D675BC /* CoreVideo.framework */,
+				A4528F1715BB223C00D675BC /* CoreMedia.framework */,
+				A4528F1315BB222F00D675BC /* OpenGLES.framework */,
+				A4528F1415BB222F00D675BC /* QuartzCore.framework */,
 				A4E7041615BB19210036C98D /* UIKit.framework */,
 				A4E7041815BB19210036C98D /* Foundation.framework */,
 				A4E7041A15BB19210036C98D /* CoreGraphics.framework */,

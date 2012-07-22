@@ -10,4 +10,6 @@
 
 @interface FKFilterPickerController : UIViewController
 
+@property (nonatomic, retain) UIImage *image;
+
 @end

@@ -7,26 +7,60 @@
 //
 
 #import "FKImagePickerController.h"
+#import "FKFilterPickerController.h"
+#import "FKCropAction.h"
 
-@interface FKImagePickerController ()
+@interface FKImagePickerController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
-@implementation FKImagePickerController
+@implementation FKImagePickerController {
+    @private
+    UIImagePickerController *_imagePicker;
+    FKFilterPickerController *_filterPicker;
+    BOOL _showPicker;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
+    return [self init];
+}
+
+- (id)init
+{
+    self = [super initWithNibName:nil bundle:nil];
+    if (!self)
+        return nil;
+    
+    _imagePicker = [[UIImagePickerController alloc] init];
+    _imagePicker.delegate = self;
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    _imagePicker.allowsEditing = YES;
+    _filterPicker = [[FKFilterPickerController alloc] init];
+    
     return self;
+}
+
+- (void)loadView
+{
+    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view.opaque = NO;
+    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"View Loaded");
+    
+    if (!_showPicker) {
+        [self presentModalViewController:_imagePicker animated:YES];
+        _showPicker = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +68,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+        FKCropAction *crop = [[FKCropAction alloc] init];
+        CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
+        crop.origin = cropRect.origin;
+        crop.cropSize = cropRect.size;
+        _filterPicker.image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+        
+        [self presentModalViewController:_filterPicker animated:YES];
+    }];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:NO];
+}
+
 
 @end
