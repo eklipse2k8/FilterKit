@@ -31,6 +31,7 @@
 @property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 
 - (void)tappedCancel:(id)sender;
+- (void)tappedDone:(id)sender;
 
 - (void)didDragDisk:(UIPanGestureRecognizer *)gestureRecognizer;
 
@@ -127,13 +128,23 @@
     UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44.0)];
     [navBar setBackgroundImage:[UIImage imageNamed:@"navBar.png"] forBarMetrics:UIBarMetricsDefault];
     [navBar pushNavigationItem:[[UINavigationItem alloc] initWithTitle:NSLocalizedString(@"Choose Filter", @"")] animated:NO];
-    [navBar.topItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleDone target:self action:@selector(tappedCancel:)]];
+    [navBar.topItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", @"") style:UIBarButtonItemStyleDone target:self action:@selector(tappedCancel:)]];
     [self.chrome addSubview:navBar];
+    
+    [[UIBarButtonItem appearance] setBackgroundImage:[UIImage imageNamed:@"navBarButton.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     
     UIView *bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-80, self.view.frame.size.width, 80)];
     bottomBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bottomBar.png"]];
     bottomBar.opaque = NO;
+    
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake((bottomBar.frame.size.width-70.0)/2, bottomBar.frame.size.height-70.0, 70.0, 70.0)];
+    [doneButton setImage:[UIImage imageNamed:@"donePickingButton.png"] forState:UIControlStateNormal];
+    [doneButton addTarget:self action:@selector(tappedDone:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomBar addSubview:doneButton];
+     
     [self.chrome addSubview:bottomBar];
+
     
     [self.view addSubview:self.chrome];
     
@@ -158,6 +169,9 @@
 - (void)tappedCancel:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)tappedDone:(id)sender{
 }
 
 - (void)didDragDisk:(UIPanGestureRecognizer *)gestureRecognizer

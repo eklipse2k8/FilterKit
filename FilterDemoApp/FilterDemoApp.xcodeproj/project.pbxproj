@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8164ECA415BBAB8C0076BF0B /* lightleak-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */; };
-		8164ECA515BBAB8C0076BF0B /* lightleak-2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */; };
 		A4528F1215BB212500D675BC /* libFilterKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7043F15BB193F0036C98D /* libFilterKit.a */; };
 		A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1315BB222F00D675BC /* OpenGLES.framework */; };
 		A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4528F1415BB222F00D675BC /* QuartzCore.framework */; };
@@ -23,12 +21,13 @@
 		A4E7042715BB19210036C98D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7042615BB19210036C98D /* AppDelegate.m */; };
 		A4E7042A15BB19210036C98D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7042915BB19210036C98D /* ViewController.m */; };
 		A4E7042D15BB19210036C98D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E7042B15BB19210036C98D /* ViewController.xib */; };
-		D063456715BB59330023A18B /* unfiltered@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D063456315BB59330023A18B /* unfiltered@2x.jpg */; };
 		D09374A715BB845000719CF0 /* disk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D09374A615BB845000719CF0 /* disk@2x.png */; };
 		D093750015BC74F800719CF0 /* cameraViewPort@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D09374FF15BC74F800719CF0 /* cameraViewPort@2x.png */; };
 		D093750215BC76D700719CF0 /* navBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093750115BC76D700719CF0 /* navBar@2x.png */; };
 		D093750415BC78CE00719CF0 /* navBarShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093750315BC78CE00719CF0 /* navBarShadow@2x.png */; };
 		D093750615BC7B3D00719CF0 /* bottomBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093750515BC7B3D00719CF0 /* bottomBar@2x.png */; };
+		D093751515BC956B00719CF0 /* donePickingButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093751415BC956B00719CF0 /* donePickingButton@2x.png */; };
+		D093751715BC975100719CF0 /* navBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093751615BC975100719CF0 /* navBarButton@2x.png */; };
 		E44F2F0E15BB5AA800B4DDA7 /* cat_burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E44F2F0D15BB5AA800B4DDA7 /* cat_burger.jpg */; };
 		E44F2F1015BB629200B4DDA7 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = E44F2F0F15BB629200B4DDA7 /* overlay.png */; };
 /* End PBXBuildFile section */
@@ -51,8 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "lightleak-1.jpg"; path = "../../../../FilterKit/FilterKit/lightleak-1.jpg"; sourceTree = "<group>"; };
-		8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "lightleak-2.JPG"; path = "../../../../FilterKit/FilterKit/lightleak-2.JPG"; sourceTree = "<group>"; };
 		A4528F1315BB222F00D675BC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A4528F1415BB222F00D675BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A4528F1715BB223C00D675BC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -72,12 +69,13 @@
 		A4E7042915BB19210036C98D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A4E7042C15BB19210036C98D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		A4E7043315BB193F0036C98D /* FilterKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FilterKit.xcodeproj; path = ../FilterKit/FilterKit.xcodeproj; sourceTree = "<group>"; };
-		D063456315BB59330023A18B /* unfiltered@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "unfiltered@2x.jpg"; sourceTree = "<group>"; };
 		D09374A615BB845000719CF0 /* disk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disk@2x.png"; sourceTree = "<group>"; };
 		D09374FF15BC74F800719CF0 /* cameraViewPort@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cameraViewPort@2x.png"; sourceTree = "<group>"; };
 		D093750115BC76D700719CF0 /* navBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBar@2x.png"; sourceTree = "<group>"; };
 		D093750315BC78CE00719CF0 /* navBarShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBarShadow@2x.png"; sourceTree = "<group>"; };
 		D093750515BC7B3D00719CF0 /* bottomBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomBar@2x.png"; sourceTree = "<group>"; };
+		D093751415BC956B00719CF0 /* donePickingButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "donePickingButton@2x.png"; sourceTree = "<group>"; };
+		D093751615BC975100719CF0 /* navBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBarButton@2x.png"; sourceTree = "<group>"; };
 		E44F2F0D15BB5AA800B4DDA7 /* cat_burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_burger.jpg; sourceTree = "<group>"; };
 		E44F2F0F15BB629200B4DDA7 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,9 +184,8 @@
 				D093750515BC7B3D00719CF0 /* bottomBar@2x.png */,
 				D09374FF15BC74F800719CF0 /* cameraViewPort@2x.png */,
 				D09374A615BB845000719CF0 /* disk@2x.png */,
-				8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */,
-				8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */,
-				D063456315BB59330023A18B /* unfiltered@2x.jpg */,
+				D093751415BC956B00719CF0 /* donePickingButton@2x.png */,
+				D093751615BC975100719CF0 /* navBarButton@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -263,16 +260,15 @@
 			files = (
 				A4E7042115BB19210036C98D /* InfoPlist.strings in Resources */,
 				A4E7042D15BB19210036C98D /* ViewController.xib in Resources */,
-				D063456715BB59330023A18B /* unfiltered@2x.jpg in Resources */,
 				E44F2F0E15BB5AA800B4DDA7 /* cat_burger.jpg in Resources */,
 				E44F2F1015BB629200B4DDA7 /* overlay.png in Resources */,
 				D09374A715BB845000719CF0 /* disk@2x.png in Resources */,
-				8164ECA415BBAB8C0076BF0B /* lightleak-1.jpg in Resources */,
-				8164ECA515BBAB8C0076BF0B /* lightleak-2.JPG in Resources */,
 				D093750015BC74F800719CF0 /* cameraViewPort@2x.png in Resources */,
 				D093750215BC76D700719CF0 /* navBar@2x.png in Resources */,
 				D093750415BC78CE00719CF0 /* navBarShadow@2x.png in Resources */,
 				D093750615BC7B3D00719CF0 /* bottomBar@2x.png in Resources */,
+				D093751515BC956B00719CF0 /* donePickingButton@2x.png in Resources */,
+				D093751715BC975100719CF0 /* navBarButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
