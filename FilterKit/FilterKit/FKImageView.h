@@ -25,7 +25,6 @@
  */
 @property (assign, readonly, nonatomic) BOOL filterApplied;
 
-- (void)processFilter;
-
+- (void)processFilterChain;
 
 @end

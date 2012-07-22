@@ -10,6 +10,7 @@
 #import "FKImageView.h"
 #import "FKGPUFilterGroup.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FKBlackWhiteFilter.h"
 
 @interface FKImagePickerController ()
 @property(nonatomic, strong) FKImageView *image;
@@ -21,7 +22,7 @@
 
 @implementation FKImagePickerController
 
-@synthesize image, filteredImage;
+@synthesize image, filteredImage = _filteredImage;
 @synthesize filterMask;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,13 +47,13 @@
     self.image.image = [UIImage imageNamed:@"unfiltered.jpg"];
     [self.view addSubview:self.image];
     
-    
-    FKGPUFilterGroup *group = [[FKGPUFilterGroup alloc] init];
-    
-    self.filteredImage = [[FKImageView alloc] initWithFrame:imageFrame];
-    self.filteredImage.image = [group imageWithFilterAppliedWithImage:[UIImage imageNamed:@"unfiltered.jpg"]];
-    [self.view addSubview:self.filteredImage];
-    
+    FKImageView *filteredImage = [[FKImageView alloc] initWithFrame:imageFrame];
+    self.filteredImage = filteredImage;
+    FKBlackWhiteFilter *filter = [[FKBlackWhiteFilter alloc] init];
+    filteredImage.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    filteredImage.filterChain = filter;
+    [filteredImage processFilterChain];
+    [self.view addSubview:filteredImage];
 
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor blackColor].CGColor;

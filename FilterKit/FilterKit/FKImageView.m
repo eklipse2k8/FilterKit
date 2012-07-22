@@ -7,6 +7,8 @@
 //
 
 #import "FKImageView.h"
+#import "FKFilterChain.h"
+#import "FKFilter.h"
 
 @interface FKImageView ()
 @property (assign, nonatomic) BOOL filterApplied;
@@ -29,7 +31,6 @@
     
     _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     [self addSubview:_imageView];
-    //self.layer.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5f].CGColor;
     
     return self;
 }
@@ -39,9 +40,17 @@
     _imageView.frame = self.bounds;
 }
 
-- (void)processFilter
+- (void)processFilterChain
 {
+    __block UIImage *image = self.image;
+    NSArray *filters = _filterChain.filters;
     
+    [filters enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        id <FKFilter>filter = (id <FKFilter>)obj;
+        image = [filter imageWithFilterAppliedWithImage:image];
+    }];
+    
+    self.image = image;
 }
 
 - (void)setImage:(UIImage *)image

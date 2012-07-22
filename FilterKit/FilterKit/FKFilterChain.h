@@ -17,4 +17,6 @@
 
 - (void)addFilterToChain:(id <FKFilter>)filter;
 
+@property (nonatomic, readonly, retain) NSArray *filters;
+
 @end
