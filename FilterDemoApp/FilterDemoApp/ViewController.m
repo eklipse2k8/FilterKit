@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "FKFilterPickerController.h"
+#import "FKImagePickerController.h"
 
 @interface ViewController ()
 
@@ -29,8 +30,8 @@
 
 - (void)showPicker:(id)sender
 {
-    FKFilterPickerController *imagePickerController = [[FKFilterPickerController alloc] initWithNibName:nil bundle:nil];
-    [self presentModalViewController:imagePickerController animated:YES];
+    FKImagePickerController *imagePicker = [[FKImagePickerController alloc] init];
+    [self presentModalViewController:imagePicker animated:YES];
 }
 
 @end

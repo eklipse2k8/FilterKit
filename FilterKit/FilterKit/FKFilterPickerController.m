@@ -54,10 +54,16 @@
 @synthesize disk, filterMask;
 @synthesize filters, filteredImages;
 @synthesize panGestureRecognizer;
+@synthesize image = _image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    return [self init];
+}
+
+- (id)init
+{
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
         self.filters = [[NSMutableArray alloc] init];
         [self.filters addObject:[NSNull null]];
@@ -88,7 +94,7 @@
     CGRect imageFrame = CGRectMake(0, 60, 320, 320);
     
     self.imageView = [[FKImageView alloc] initWithFrame:imageFrame];
-    self.imageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.imageView.image = self.image;
     [self.view addSubview:self.imageView];
     
     self.filteredImageView = [[FKImageView alloc] initWithFrame:imageFrame];
@@ -100,7 +106,6 @@
     self.filterMask.anchorPoint = CGPointMake(0.0, 0.5);
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.filteredImageView.layer.mask = filterMask;
-//    [self.view.layer addSublayer:self.filterMask];
     
     UIImageView *viewPort = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cameraViewPort.png"]];
     viewPort.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -304,7 +309,7 @@
 {    
     Class filter = (Class)[self.filters objectAtIndex:index];
     
-    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.filteredImageView.image = self.image;
     
     if(![filter isKindOfClass:[NSNull class]]){  
         FKFilterChain *filterChain = [filter alloc];
