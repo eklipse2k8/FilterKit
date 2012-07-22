@@ -265,7 +265,7 @@
     self.filteredImages = [[NSMutableDictionary alloc] init];
     [self.filters enumerateObjectsUsingBlock:^(Class filter, NSUInteger idx, BOOL *stop){
         if(![filter isKindOfClass:[NSNull class]]){
-            self.filteredImageView.image = [UIImage imageNamed:@"unfiltered@2x.jpg"];
+            self.filteredImageView.image = self.image;
             self.filteredImageView.filterChain = [[filter alloc] init];
             [self.filteredImageView processFilterChain];
             
