@@ -17,6 +17,7 @@
 		A4528F2E15BB413400D675BC /* FKMaskFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2D15BB413400D675BC /* FKMaskFilter.m */; };
 		A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */; };
 		A4528F9415BB814200D675BC /* FKCropAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F9315BB814200D675BC /* FKCropAction.m */; };
+		A4528FB315BBABD500D675BC /* FKFilters.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528FB215BBABD500D675BC /* FKFilters.m */; };
 		A4E703EA15BB18120036C98D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E703E915BB18120036C98D /* Foundation.framework */; };
 		A4E7048015BB1B0C0036C98F /* FKOverlayFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,8 @@
 		A4528F9215BB814200D675BC /* FKCropAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKCropAction.h; path = Actions/FKCropAction.h; sourceTree = "<group>"; };
 		A4528F9315BB814200D675BC /* FKCropAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKCropAction.m; path = Actions/FKCropAction.m; sourceTree = "<group>"; };
 		A4528F9A15BB816000D675BC /* FKAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FKAction.h; sourceTree = "<group>"; };
+		A4528FB115BBABD400D675BC /* FKFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilters.h; sourceTree = "<group>"; };
+		A4528FB215BBABD500D675BC /* FKFilters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKFilters.m; sourceTree = "<group>"; };
 		A4E703E615BB18120036C98D /* libFilterKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFilterKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E703E915BB18120036C98D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FilterKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				A4E7048015BB1B0C0036C98E /* FKOverlayFilter.m */,
 				A4528F3215BB418400D675BC /* FKFilter.h */,
 				A4528F9A15BB816000D675BC /* FKAction.h */,
+				A4528FB115BBABD400D675BC /* FKFilters.h */,
+				A4528FB215BBABD500D675BC /* FKFilters.m */,
 			);
 			path = FilterKit;
 			sourceTree = "<group>";
@@ -270,6 +275,7 @@
 				A4E7048015BB1B0C0036C98F /* FKOverlayFilter.m in Sources */,
 				A4528F9415BB814200D675BC /* FKCropAction.m in Sources */,
 				8164EC7615BB89B30076BF0B /* FKLightLeakFilter.m in Sources */,
+				A4528FB315BBABD500D675BC /* FKFilters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
