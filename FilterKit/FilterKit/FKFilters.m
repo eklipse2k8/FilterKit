@@ -17,7 +17,8 @@
 
 NSString * const FKFilterList[] = {
     @"FKBlackWhiteFilter",
-    @"FKBlueValentine",
+    @"FKSepia",
+    @"BlueValentine",
     nil
 };
 
