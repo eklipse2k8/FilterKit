@@ -169,10 +169,14 @@
 
 - (void)tappedCancel:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(filterPickerDidCancel:)])
+        [self.delegate filterPickerDidCancel:self];
 }
 
-- (void)tappedDone:(id)sender{
+- (void)tappedDone:(id)sender
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(filterPicker:didFinishPickingFilterWithInfo:)])
+        [self.delegate filterPicker:self didFinishPickingFilterWithInfo:nil];
 }
 
 - (void)didDragDisk:(UIPanGestureRecognizer *)gestureRecognizer
