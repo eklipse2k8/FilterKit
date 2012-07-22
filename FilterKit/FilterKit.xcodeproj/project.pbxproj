@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8164EC7615BB89B30076BF0B /* FKLightLeakFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8164EC7515BB89B30076BF0B /* FKLightLeakFilter.m */; };
 		A4528F0415BB210100D675BC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E7047E15BB1B0C0036C98D /* libGPUImage.a */; };
 		A4528F1B15BB34A500D675BC /* FKImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F1A15BB34A500D675BC /* FKImagePickerController.m */; };
 		A4528F2215BB35AE00D675BC /* FKFilterPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4528F2115BB35AE00D675BC /* FKFilterPictureController.m */; };
@@ -50,6 +51,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8164EC7415BB89B30076BF0B /* FKLightLeakFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FKLightLeakFilter.h; path = Filters/FKLightLeakFilter.h; sourceTree = "<group>"; };
+		8164EC7515BB89B30076BF0B /* FKLightLeakFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FKLightLeakFilter.m; path = Filters/FKLightLeakFilter.m; sourceTree = "<group>"; };
+		8164EC7B15BB8B350076BF0B /* lightleak-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lightleak-1.jpg"; sourceTree = "<group>"; };
+		8164EC7C15BB8B470076BF0B /* lightleak-2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lightleak-2.JPG"; sourceTree = "<group>"; };
 		A4528F1915BB34A500D675BC /* FKImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKImagePickerController.h; sourceTree = "<group>"; };
 		A4528F1A15BB34A500D675BC /* FKImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKImagePickerController.m; sourceTree = "<group>"; };
 		A4528F2015BB35AE00D675BC /* FKFilterPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKFilterPictureController.h; sourceTree = "<group>"; };
@@ -94,6 +99,8 @@
 			children = (
 				A4528F3415BB437C00D675BC /* FKBlackWhiteFilter.h */,
 				A4528F3515BB437C00D675BC /* FKBlackWhiteFilter.m */,
+				8164EC7415BB89B30076BF0B /* FKLightLeakFilter.h */,
+				8164EC7515BB89B30076BF0B /* FKLightLeakFilter.m */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -162,6 +169,8 @@
 		A4E703EC15BB18120036C98D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8164EC7B15BB8B350076BF0B /* lightleak-1.jpg */,
+				8164EC7C15BB8B470076BF0B /* lightleak-2.JPG */,
 				A4E703ED15BB18120036C98D /* FilterKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -260,6 +269,7 @@
 				A4528F3615BB437C00D675BC /* FKBlackWhiteFilter.m in Sources */,
 				A4E7048015BB1B0C0036C98F /* FKOverlayFilter.m in Sources */,
 				A4528F9415BB814200D675BC /* FKCropAction.m in Sources */,
+				8164EC7615BB89B30076BF0B /* FKLightLeakFilter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

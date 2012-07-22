@@ -11,6 +11,7 @@
 #import "FKGPUFilterGroup.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FKBlackWhiteFilter.h"
+#import "FKLightLeakFilter.h"
 
 @interface FKImagePickerController ()
 @property(nonatomic, strong) FKImageView *image;
@@ -49,7 +50,8 @@
     
     FKImageView *filteredImage = [[FKImageView alloc] initWithFrame:imageFrame];
     self.filteredImage = filteredImage;
-    FKBlackWhiteFilter *filter = [[FKBlackWhiteFilter alloc] init];
+//    FKBlackWhiteFilter *filter = [[FKBlackWhiteFilter alloc] init];
+    FKLightLeakFilter *filter = [[FKLightLeakFilter alloc] init];
     filteredImage.image = [UIImage imageNamed:@"unfiltered.jpg"];
     filteredImage.filterChain = filter;
     [filteredImage processFilterChain];
