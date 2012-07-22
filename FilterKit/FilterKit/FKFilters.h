@@ -8,4 +8,4 @@
 
 #import <Foundation/Foundation.h>
 
-extern const NSString * const FKFilterList[];
+extern NSString * const FKFilterList[];

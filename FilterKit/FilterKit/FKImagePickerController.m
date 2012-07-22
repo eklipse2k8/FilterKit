@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FKBlackWhiteFilter.h"
 #import "FKLightLeakFilter.h"
+#import "FKFilters.h"
 
 #define RADIANS(degrees) (degrees / 180.0 * M_PI)
 
@@ -48,9 +49,14 @@
     if (self) {
         self.filters = [[NSMutableArray alloc] init];
         [self.filters addObject:[NSNull null]];
-        [self.filters addObject:[FKBlackWhiteFilter class]];
-        [self.filters addObject:[FKLightLeakFilter class]];
         
+        NSUInteger next = 0;
+        NSString *filterListString = FKFilterList[next++];
+        while (filterListString != nil) {
+            [self.filters addObject:NSClassFromString(filterListString)];
+            filterListString = FKFilterList[next++];
+        }
+                
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
         self.view.clipsToBounds = YES;
