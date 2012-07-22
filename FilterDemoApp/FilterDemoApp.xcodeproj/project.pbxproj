@@ -173,13 +173,9 @@
 		D063455F15BB59330023A18B /* images */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				D09374A615BB845000719CF0 /* disk@2x.png */,
-=======
 				8164ECA215BBAB8C0076BF0B /* lightleak-1.jpg */,
 				8164ECA315BBAB8C0076BF0B /* lightleak-2.JPG */,
-				D063456015BB59330023A18B /* filtered@2x.jpg */,
->>>>>>> light streak filter done
 				D063456315BB59330023A18B /* unfiltered@2x.jpg */,
 			);
 			path = images;
@@ -258,12 +254,9 @@
 				D063456715BB59330023A18B /* unfiltered@2x.jpg in Resources */,
 				E44F2F0E15BB5AA800B4DDA7 /* cat_burger.jpg in Resources */,
 				E44F2F1015BB629200B4DDA7 /* overlay.png in Resources */,
-<<<<<<< HEAD
 				D09374A715BB845000719CF0 /* disk@2x.png in Resources */,
-=======
 				8164ECA415BBAB8C0076BF0B /* lightleak-1.jpg in Resources */,
 				8164ECA515BBAB8C0076BF0B /* lightleak-2.JPG in Resources */,
->>>>>>> light streak filter done
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
