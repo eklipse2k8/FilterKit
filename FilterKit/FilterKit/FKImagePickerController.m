@@ -18,8 +18,8 @@
 #define DISK_CENTER_X -1150.0
 #define DRAG_DISTANCE 300
 #define FILTER_STEP_ANGLE RADIANS(27.0)
-#define MASK_PREV_TRANSFORM CATransform3DMakeRotation(-FILTER_STEP_ANGLE, 0, 0, 1.0);
-#define MASK_NEXT_TRANSFORM CATransform3DMakeRotation(FILTER_STEP_ANGLE, 0, 0, 1.0);
+#define MASK_NEXT_TRANSFORM CATransform3DMakeRotation(-FILTER_STEP_ANGLE, 0, 0, 1.0);
+#define MASK_PREV_TRANSFORM CATransform3DMakeRotation(FILTER_STEP_ANGLE, 0, 0, 1.0);
 
 @interface FKImagePickerController ()
 @property(nonatomic, strong) FKImageView *imageView;
@@ -36,7 +36,9 @@
 @end
 
 
-@implementation FKImagePickerController
+@implementation FKImagePickerController {
+    int _currentFilterIndex;
+}
 
 @synthesize imageView, filteredImageView, disk;
 @synthesize filterMask;
@@ -50,6 +52,8 @@
         [self.filters addObject:[NSNull null]];
         [self.filters addObject:[FKBlackWhiteFilter class]];
         [self.filters addObject:[FKLightLeakFilter class]];
+        
+        _currentFilterIndex = 0;
         
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
@@ -76,21 +80,13 @@
     [self.view addSubview:self.imageView];
     
     self.filteredImageView = [[FKImageView alloc] initWithFrame:imageFrame];
-    
-    Class group = (Class)[self.filters objectAtIndex:2];
-    
-//    self.filteredImageView.image = [group imageWithFilterAppliedWithImage:[UIImage imageNamed:@"unfiltered.jpg"]];
-    //    FKBlackWhiteFilter *filter = [[FKBlackWhiteFilter alloc] init];
-    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
-    self.filteredImageView.filterChain = [[group alloc] init];
-    [self.filteredImageView processFilterChain];
     [self.view addSubview:self.filteredImageView];
 
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor blackColor].CGColor;
     self.filterMask.frame = CGRectMake(DISK_CENTER_X, 0, 1000, imageFrame.size.height+10);
     self.filterMask.anchorPoint = CGPointMake(0.0, 0.5);
-    self.filterMask.transform = MASK_PREV_TRANSFORM;
+    self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.filteredImageView.layer.mask = filterMask;
 //    [self.view.layer addSublayer:self.filterMask];
     
@@ -98,12 +94,6 @@
     self.disk.image = [UIImage imageNamed:@"disk.png"];
     self.disk.layer.anchorPoint = CGPointMake(0.0, 0.5);
     [self.view addSubview:disk];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -152,28 +142,35 @@
     
     CGFloat offset = MAX(-1.0, MIN((multiplier*currentTranslation.y)/DRAG_DISTANCE, 1.0));
     
-    if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
+    if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
+        
+        if(offset < 0)
+            [self preparePreviousFilter];
+        else
+            [self prepareNextFilter];
+        
+    }else if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
        gestureRecognizer.state == UIGestureRecognizerStateCancelled){
         
         [UIView animateWithDuration:0.2 animations:^{
             if(fabs(offset) > 0.5){
                 if(offset < 0){
-                    self.filterMask.transform = MASK_PREV_TRANSFORM;
-                    self.disk.layer.transform = MASK_PREV_TRANSFORM;
+                    self.filterMask.transform = MASK_NEXT_TRANSFORM;
+                    self.disk.layer.transform = MASK_NEXT_TRANSFORM;
                 }else{
                     self.filterMask.transform = CATransform3DIdentity;
-                    self.disk.layer.transform = MASK_NEXT_TRANSFORM;
+                    self.disk.layer.transform = MASK_PREV_TRANSFORM;
                 }
             }else{
-                self.filterMask.transform = MASK_PREV_TRANSFORM;
+                self.filterMask.transform = MASK_NEXT_TRANSFORM;
                 self.disk.layer.transform = CATransform3DIdentity;
             }
         }completion:^(BOOL finished){
             if(fabs(offset) > 0.5){            
                 if(offset < 0)
-                    [self swapToPreviousfilter];
-                else
                     [self swapToNextfilter];
+                else
+                    [self swapToPreviousfilter];
             }
         }];
         
@@ -193,25 +190,49 @@
 #pragma mark - 
 #pragma mark - Filter Application
 
-- (void)swapToPreviousfilter
+- (void)preparePreviousFilter
 {
-    //reset disk & mask
-    [CATransaction begin];
-    [CATransaction setAnimationDuration:0.0];
-    self.filterMask.transform = MASK_PREV_TRANSFORM;
-    self.disk.layer.transform = CATransform3DIdentity;
-    [CATransaction commit];
+    if(_currentFilterIndex == 0) return;
+    
+    Class group = (Class)[self.filters objectAtIndex:_currentFilterIndex-1];
+    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.filteredImageView.filterChain = [[group alloc] init];
+    [self.filteredImageView processFilterChain];
+}
+
+- (void)prepareNextFilter
+{
+    if(_currentFilterIndex == [self.filters count]-1) return;
+    
+    Class group = (Class)[self.filters objectAtIndex:_currentFilterIndex+1];
+    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.filteredImageView.filterChain = [[group alloc] init];
+    [self.filteredImageView processFilterChain];
 }
 
 - (void)swapToNextfilter
 {
+    _currentFilterIndex = MAX(_currentFilterIndex-1, 0);
+    
+    //reset disk & mask
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.0];
+    self.filterMask.transform = MASK_NEXT_TRANSFORM;
+    self.disk.layer.transform = CATransform3DIdentity;
+    [CATransaction commit];
+}
+
+- (void)swapToPreviousfilter
+{
+    _currentFilterIndex = MIN(_currentFilterIndex+1, [self.filters count]-1);
+    
     UIImage *image = self.imageView.image;
     self.imageView.image = self.filteredImageView.image;
 
     //reset disk & mask
     [CATransaction begin];
     [CATransaction setAnimationDuration:0.0];
-    self.filterMask.transform = MASK_PREV_TRANSFORM;
+    self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.disk.layer.transform = CATransform3DIdentity;
     [CATransaction commit];
 

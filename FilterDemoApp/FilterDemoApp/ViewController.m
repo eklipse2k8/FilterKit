@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "FKImagePickerController.m"
+#import "FKImagePickerController.h"
 
 @interface ViewController ()
 
