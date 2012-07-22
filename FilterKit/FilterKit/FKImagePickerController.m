@@ -10,6 +10,8 @@
 #import "FKImageView.h"
 #import "FKGPUFilterGroup.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FKBlackWhiteFilter.h"
+#import "FKLightLeakFilter.h"
 
 #define RADIANS(degrees) (degrees / 180.0 * M_PI)
 
@@ -46,8 +48,8 @@
     if (self) {
         self.filters = [[NSMutableArray alloc] init];
         [self.filters addObject:[NSNull null]];
-        [self.filters addObject:[[FKGPUFilterGroup alloc] init]];
-        
+        [self.filters addObject:[FKBlackWhiteFilter class]];
+        [self.filters addObject:[FKLightLeakFilter class]];
         
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
@@ -75,11 +77,14 @@
     
     self.filteredImageView = [[FKImageView alloc] initWithFrame:imageFrame];
     
-    FKGPUFilterGroup *group = (FKGPUFilterGroup *)[self.filters objectAtIndex:1];
+    Class group = (Class)[self.filters objectAtIndex:2];
     
-    self.filteredImageView.image = [group imageWithFilterAppliedWithImage:[UIImage imageNamed:@"unfiltered.jpg"]];
+//    self.filteredImageView.image = [group imageWithFilterAppliedWithImage:[UIImage imageNamed:@"unfiltered.jpg"]];
+    //    FKBlackWhiteFilter *filter = [[FKBlackWhiteFilter alloc] init];
+    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
+    self.filteredImageView.filterChain = [[group alloc] init];
+    [self.filteredImageView processFilterChain];
     [self.view addSubview:self.filteredImageView];
-    
 
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor blackColor].CGColor;

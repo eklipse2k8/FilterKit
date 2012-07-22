@@ -3,15 +3,12 @@
 //
 //
 
-
 #import <Foundation/Foundation.h>
 #import "FKFilter.h"
 
 
-@interface FKOverlayFilter : NSObject <FKFilter> {
+@interface FKOverlayFilter : NSObject <FKFilter>
 
-
-}
 @property(nonatomic, strong) UIImage *overlayImage;
 
 @end

@@ -27,6 +27,8 @@
     
     GPUImageMonochromeFilter *mono = [[GPUImageMonochromeFilter alloc] init];
     [mono forceProcessingAtSize:CGSizeMake(600, 600)];
+   // mono.color = (GPUVector4){0.5f, 0.5f, 0.5f, 1.f};
+
     [filter addGPUFilter:mono];
     
     return self;
@@ -35,6 +37,16 @@
 - (void)dealloc
 {
     
+}
+
+- (NSString *)title
+{
+    return @"Black & White";
+}
+
+- (NSString *)localizedTitle
+{
+    return NSLocalizedString(@"Black & White", @"Localized title for default filter chain.");
 }
 
 @end

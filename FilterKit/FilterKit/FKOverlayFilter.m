@@ -8,20 +8,9 @@
 #import "FKOverlayFilter.h"
 
 
-@implementation FKOverlayFilter {
+@implementation FKOverlayFilter
 
-}
 @synthesize overlayImage;
-
-
-- (id)init
-{
-    self = [super init];
-    if (!self)
-        return nil;
-
-    return self;
-}
 
 - (UIImage *)imageWithFilterAppliedWithImage:(UIImage *)image
 {

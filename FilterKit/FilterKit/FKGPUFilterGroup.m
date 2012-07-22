@@ -43,16 +43,18 @@
 - (UIImage *)imageWithFilterAppliedWithImage:(UIImage *)image
 {
     _picture = [[GPUImagePicture alloc] initWithImage:image smoothlyScaleOutput:YES];
-    
-    GPUImageMonochromeFilter *mono = [[GPUImageMonochromeFilter alloc] init];
-    mono.color = (GPUVector4){0.5f, 0.5f, 0.5f, 1.f};
-    //[mono forceProcessingAtSize:CGSizeMake(600, 600)];
-    [_picture addTarget:mono];
-    
-    //return [_picture imageByFilteringImage:image];
-    
-    [_picture processImage];
-    return mono.imageFromCurrentlyProcessedOutput;
+    GPUImageOutput *lastFilter = _picture;
+    GPUImageFilter *filter = nil;
+    NSUInteger count = [_gpuFilters count];
+    for (NSUInteger i = 0; i < count; i++) {
+        filter = [_gpuFilters objectAtIndex:i];
+        [lastFilter addTarget:filter];
+        if ([lastFilter respondsToSelector:@selector(processImage)]) {
+            [(GPUImagePicture *)lastFilter processImage];
+        }
+        lastFilter = filter;
+    }
+    return filter.imageFromCurrentlyProcessedOutput;
 }
 
 @end

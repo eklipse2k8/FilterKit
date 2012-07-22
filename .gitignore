@@ -13,3 +13,9 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+
+.DS_Store
+
+.idea
+
+FilterDemoApp/.DS_Store

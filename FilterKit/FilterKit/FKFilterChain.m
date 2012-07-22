@@ -13,6 +13,8 @@
     NSMutableArray *_filters;
 }
 
+@synthesize filters = _filters;
+
 - (id)init
 {
     self = [super init];
@@ -27,6 +29,7 @@
 - (void)dealloc
 {
     [_filters removeAllObjects];
+    _filters = nil;
 }
 
 - (NSString *)title
