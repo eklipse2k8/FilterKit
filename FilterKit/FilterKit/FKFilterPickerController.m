@@ -6,10 +6,9 @@
 //  Copyright (c) 2012 iOS Dev Camp 2012. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "FKFilterPickerController.h"
 #import "FKImageView.h"
-#import "FKGPUFilterGroup.h"
-#import <QuartzCore/QuartzCore.h>
 #import "FKFilters.h"
 #import "FKFilterChain.h"
 
@@ -21,18 +20,22 @@
 #define MASK_NEXT_TRANSFORM CATransform3DMakeRotation(-FILTER_STEP_ANGLE, 0, 0, 1.0);
 #define MASK_PREV_TRANSFORM CATransform3DMakeRotation(FILTER_STEP_ANGLE, 0, 0, 1.0);
 
-@interface FKFilterPickerController ()
-@property(nonatomic, strong) FKImageView *imageView;
-@property(nonatomic, strong) FKImageView *filteredImageView;
-@property(nonatomic, strong) UIImageView *disk;
-@property(nonatomic, strong) CALayer *filterMask;
 
+@interface FKFilterPickerController ()
+@property(nonatomic, strong) FKImageView *imageView, *filteredImageView;
+@property(nonatomic, strong) CALayer *disk, *filterMask;
 @property(nonatomic, strong) NSMutableArray *filters;
 
-//- (void)didSwipeViewPort:(UISwipeGestureRecognizer *)gestureRecognizer;
 - (void)didDragViewPort:(UIPanGestureRecognizer *)gestureRecognizer;
-- (void)swapToPreviousfilter;
+
+- (void)didEndSwipingWithOffset:(CGFloat)offset;
+- (void)didEndDraggingWithOffset:(CGFloat)offset;
+
+- (void)preparePreviousFilter;
+- (void)prepareNextFilter;
+- (void)prepareFilterForIndex:(NSUInteger)index;
 - (void)swapToNextfilter;
+- (void)swapToPreviousfilter;
 @end
 
 
@@ -63,11 +66,11 @@
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
         self.view.clipsToBounds = YES;
-        //        
-        //        
-        //        UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeViewPort:)];
-        //        [self.view addGestureRecognizer:swipeGestureRecognizer];
-        //        
+        
+        UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeViewPort:)];
+        [self.view addGestureRecognizer:swipeGestureRecognizer];
+        swipeGestureRecognizer.delegate = self;
+  
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragViewPort:)];
         [self.view addGestureRecognizer:panGestureRecognizer];
     }
@@ -89,16 +92,17 @@
     
     self.filterMask = [CALayer layer];
     self.filterMask.backgroundColor = [UIColor redColor].CGColor;
-    self.filterMask.frame = CGRectMake(DISK_CENTER_X, 0, 1000, imageFrame.size.height+20);
+    self.filterMask.frame = CGRectMake(DISK_CENTER_X, 0, 1000, imageFrame.size.height+4);
     self.filterMask.anchorPoint = CGPointMake(0.0, 0.5);
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.filteredImageView.layer.mask = filterMask;
-    //    [self.view.layer addSublayer:self.filterMask];
+//    [self.view.layer addSublayer:self.filterMask];
     
-    self.disk = [[UIImageView alloc] initWithFrame:CGRectMake(DISK_CENTER_X, imageFrame.origin.y-(2000-imageFrame.size.height)/2, 1000, 2000)];
-    self.disk.image = [UIImage imageNamed:@"disk.png"];
-    self.disk.layer.anchorPoint = CGPointMake(0.0, 0.5);
-    [self.view addSubview:disk];
+    self.disk = [CALayer layer];
+    self.disk.frame = CGRectMake(DISK_CENTER_X, imageFrame.origin.y-(2000-imageFrame.size.height)/2, 1000, 2000);
+    self.disk.contents = (id)[UIImage imageNamed:@"disk.png"].CGImage;
+    self.disk.anchorPoint = CGPointMake(0.0, 0.5);
+    [self.view.layer addSublayer:disk];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -109,34 +113,6 @@
 
 #pragma mark - 
 #pragma mark - User Interaction
-//
-//- (void)didSwipeViewPort:(UISwipeGestureRecognizer *)gestureRecognizer
-//{
-//    
-//    BOOL swipedUp = NO;
-//    if(gestureRecognizer.direction == UISwipeGestureRecognizerDirectionUp){
-//        swipedUp = YES;
-//    }else if(gestureRecognizer.direction == UISwipeGestureRecognizerDirectionDown){
-//        swipedUp = NO;
-//    }else{
-//        return;
-//    }
-//    
-//    [UIView animateWithDuration:0.2 animations:^{
-//        if(swipedUp){
-//            self.filterMask.transform = MASK_PREV_TRANSFORM;
-//            self.disk.layer.transform = MASK_PREV_TRANSFORM;
-//        }else{
-//            self.filterMask.transform = CATransform3DIdentity;
-//            self.disk.layer.transform = MASK_NEXT_TRANSFORM;
-//        }
-//    }completion:^(BOOL finished){
-//        if(swipedUp)    
-//            [self swapToPreviousfilter];
-//        else
-//            [self swapToNextfilter];
-//    }];
-//}
 
 - (void)didDragViewPort:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -144,8 +120,10 @@
     
     //This multiplier simulates torque by adjusting the rotational offset for the touch distance from the left edge of the screen.
     CGFloat multiplier = [gestureRecognizer locationInView:self.view].x/self.view.frame.size.width;
-    
+
     CGFloat offset = MAX(-1.0, MIN((multiplier*currentTranslation.y)/DRAG_DISTANCE, 1.0));
+
+    NSLog(@"y trans: %f, x loc: %f, mult: %f, off: %f", currentTranslation.y, [gestureRecognizer locationInView:self.view].x, multiplier, offset);
     
     if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
         
@@ -156,58 +134,90 @@
         
     }else if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
              gestureRecognizer.state == UIGestureRecognizerStateCancelled){
-        
-        [UIView animateWithDuration:0.2 animations:^{
-            if(fabs(offset) > 0.5){
-                if(offset < 0){
-                    self.filterMask.transform = CATransform3DIdentity;
-                    self.disk.layer.transform = MASK_NEXT_TRANSFORM;
-                }else{
-                    self.filterMask.transform = CATransform3DIdentity;
-                    self.disk.layer.transform = MASK_PREV_TRANSFORM;
-                }
-            }else{
-                if(offset < 0){
-                    self.filterMask.transform = MASK_PREV_TRANSFORM;
-                    self.disk.layer.transform = CATransform3DIdentity;
-                }else{
-                    self.filterMask.transform = MASK_NEXT_TRANSFORM;
-                    self.disk.layer.transform = CATransform3DIdentity;
-                }
-            }
-        }completion:^(BOOL finished){
-            if(fabs(offset) > 0.5){            
-                if(offset < 0)
-                    [self swapToPreviousfilter];
-                else
-                    [self swapToNextfilter];
-            }
-        }];
-        
+                
+        if(fabsf([gestureRecognizer velocityInView:self.view].y) > 600){
+            [self didEndSwipingWithOffset:offset];
+        }else{        
+            [self didEndDraggingWithOffset:offset];
+        }
     }else{
         
         CGFloat angle = MAX(-FILTER_STEP_ANGLE, MIN(FILTER_STEP_ANGLE*offset, FILTER_STEP_ANGLE));
         
         [CATransaction begin];
-        [CATransaction setAnimationDuration:0.0];
+        [CATransaction setDisableActions:YES];
         if(offset < 0)
             self.filterMask.transform = CATransform3DMakeRotation(angle+FILTER_STEP_ANGLE, 0, 0, 1.0);
         else
             self.filterMask.transform = CATransform3DMakeRotation(angle-FILTER_STEP_ANGLE, 0, 0, 1.0);
-        
-        self.disk.layer.transform = CATransform3DMakeRotation(angle, 0, 0, 1.0);;
+                
+        self.disk.transform = CATransform3DMakeRotation(angle, 0, 0, 1.0);
         [CATransaction commit];
     }
 }
 
+- (void)didEndSwipingWithOffset:(CGFloat)offset
+{
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.2];
+    [CATransaction setCompletionBlock:^{
+        if(offset < 0)
+            [self swapToNextfilter];
+        else
+            [self swapToPreviousfilter];
+    }];
+    
+    if(offset < 0){
+        self.filterMask.transform = CATransform3DIdentity;
+        self.disk.transform = MASK_NEXT_TRANSFORM;
+    }else{
+        self.filterMask.transform = CATransform3DIdentity;
+        self.disk.transform = MASK_PREV_TRANSFORM;
+    }
+    [CATransaction commit];
+}
+
+- (void)didEndDraggingWithOffset:(CGFloat)offset
+{
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.2];
+    [CATransaction setCompletionBlock:^{
+        if(fabs(offset) > 0.5){            
+            if(offset < 0)
+                [self swapToPreviousfilter];
+            else
+                [self swapToNextfilter];
+        }
+    }];
+    
+    if(fabs(offset) > 0.5){
+        if(offset < 0){
+            self.filterMask.transform = CATransform3DIdentity;
+            self.disk.transform = MASK_NEXT_TRANSFORM;
+        }else{
+            self.filterMask.transform = CATransform3DIdentity;
+            self.disk.transform = MASK_PREV_TRANSFORM;
+        }
+    }else{
+        if(offset < 0){
+            self.filterMask.transform = MASK_PREV_TRANSFORM;
+            self.disk.transform = CATransform3DIdentity;
+        }else{
+            self.filterMask.transform = MASK_NEXT_TRANSFORM;
+            self.disk.transform = CATransform3DIdentity;
+        }
+    }
+    [CATransaction commit];
+}
+
 
 #pragma mark - 
-#pragma mark - Filter Application
+#pragma mark - Filter Preparation & Application
 
 - (void)preparePreviousFilter
 {    
     [CATransaction begin];
-    [CATransaction setAnimationDuration:0.0];
+    [CATransaction setDisableActions:YES];
     self.filterMask.transform = MASK_PREV_TRANSFORM;
     [CATransaction commit];
     
@@ -221,7 +231,7 @@
 - (void)prepareNextFilter
 {
     [CATransaction begin];
-    [CATransaction setAnimationDuration:0.0];
+    [CATransaction setDisableActions:YES];
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     [CATransaction commit];
     
@@ -260,9 +270,9 @@
     
     //reset disk & mask
     [CATransaction begin];
-    [CATransaction setAnimationDuration:0.0];
+    [CATransaction setDisableActions:YES];
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
-    self.disk.layer.transform = CATransform3DIdentity;
+    self.disk.transform = CATransform3DIdentity;
     [CATransaction commit];
 }
 
@@ -279,9 +289,9 @@
     
     //reset disk & mask
     [CATransaction begin];
-    [CATransaction setAnimationDuration:0.0];
+    [CATransaction setDisableActions:YES];
     self.filterMask.transform = MASK_PREV_TRANSFORM;
-    self.disk.layer.transform = CATransform3DIdentity;
+    self.disk.transform = CATransform3DIdentity;
     [CATransaction commit];
 }
 
