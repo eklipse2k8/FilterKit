@@ -56,28 +56,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"View Loaded");
-    
     if (!_showPicker) {
-            [self presentModalViewController:_imagePicker animated:YES];
-            _showPicker = YES;
+        [self presentModalViewController:_imagePicker animated:YES];
+        _showPicker = YES;
     }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    
-}
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

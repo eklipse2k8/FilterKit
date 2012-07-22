@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class FKImagePickerController;
+
+@protocol FKImagePickerDelegate <NSObject>
+@optional
+- (void)imagePickerController:(FKImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
+- (void)imagePickerControllerDidCancel:(FKImagePickerController *)picker;
+@end
+
 @interface FKImagePickerController : UIViewController
 
 @end
