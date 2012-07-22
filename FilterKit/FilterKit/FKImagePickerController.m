@@ -89,7 +89,7 @@
     [self.view addSubview:self.filteredImageView];
 
     self.filterMask = [CALayer layer];
-    self.filterMask.backgroundColor = [UIColor blackColor].CGColor;
+    self.filterMask.backgroundColor = [UIColor redColor].CGColor;
     self.filterMask.frame = CGRectMake(DISK_CENTER_X, 0, 1000, imageFrame.size.height+10);
     self.filterMask.anchorPoint = CGPointMake(0.0, 0.5);
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
@@ -161,7 +161,7 @@
         [UIView animateWithDuration:0.2 animations:^{
             if(fabs(offset) > 0.5){
                 if(offset < 0){
-                    self.filterMask.transform = MASK_NEXT_TRANSFORM;
+                    self.filterMask.transform = CATransform3DIdentity;
                     self.disk.layer.transform = MASK_NEXT_TRANSFORM;
                 }else{
                     self.filterMask.transform = CATransform3DIdentity;
@@ -186,7 +186,11 @@
                         
         [CATransaction begin];
         [CATransaction setAnimationDuration:0.0];
-        self.filterMask.transform = CATransform3DMakeRotation(angle-FILTER_STEP_ANGLE, 0, 0, 1.0);
+        if(offset < 0)
+            self.filterMask.transform = CATransform3DMakeRotation(angle+FILTER_STEP_ANGLE, 0, 0, 1.0);
+        else
+            self.filterMask.transform = CATransform3DMakeRotation(angle-FILTER_STEP_ANGLE, 0, 0, 1.0);
+        
         self.disk.layer.transform = CATransform3DMakeRotation(angle, 0, 0, 1.0);;
         [CATransaction commit];
     }
@@ -198,6 +202,11 @@
 
 - (void)preparePreviousFilter
 {    
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.0];
+    self.filterMask.transform = MASK_PREV_TRANSFORM;
+    [CATransaction commit];
+    
     NSLog(@"prev");
     if(_currentFilterIndex == 0)
         [self prepareFilterForIndex:[self.filters count]-1];
@@ -207,6 +216,11 @@
 
 - (void)prepareNextFilter
 {
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0.0];
+    self.filterMask.transform = MASK_NEXT_TRANSFORM;
+    [CATransaction commit];
+    
     NSLog(@"next");
     if(_currentFilterIndex == [self.filters count]-1)
         [self prepareFilterForIndex:0];
@@ -236,6 +250,8 @@
     else
         _currentFilterIndex++;
     
+    self.imageView.image = self.filteredImageView.image;
+    
     //reset disk & mask
     [CATransaction begin];
     [CATransaction setAnimationDuration:0.0];
@@ -253,7 +269,6 @@
     else
         _currentFilterIndex--;
     
-    UIImage *image = self.imageView.image;
     self.imageView.image = self.filteredImageView.image;
 
     //reset disk & mask
@@ -262,9 +277,6 @@
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.disk.layer.transform = CATransform3DIdentity;
     [CATransaction commit];
-
-    
-    self.filteredImageView.image = image;
 }
 
 @end
