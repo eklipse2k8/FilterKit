@@ -27,6 +27,8 @@
     
     GPUImageMonochromeFilter *mono = [[GPUImageMonochromeFilter alloc] init];
     [mono forceProcessingAtSize:CGSizeMake(600, 600)];
+   // mono.color = (GPUVector4){0.5f, 0.5f, 0.5f, 1.f};
+
     [filter addGPUFilter:mono];
     
     return self;
