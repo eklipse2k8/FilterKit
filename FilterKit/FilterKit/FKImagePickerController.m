@@ -36,7 +36,6 @@
     _imagePicker.delegate = self;
     _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     _imagePicker.allowsEditing = YES;
-    _filterPicker = [[FKFilterPickerController alloc] init];
     
     return self;
 }
@@ -58,8 +57,10 @@
     NSLog(@"View Loaded");
     
     if (!_showPicker) {
-        [self presentModalViewController:_imagePicker animated:YES];
-        _showPicker = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentModalViewController:_imagePicker animated:YES];
+            _showPicker = YES;
+        });
     }
 }
 
@@ -82,16 +83,15 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [self dismissViewControllerAnimated:YES completion:^{
-        
         FKCropAction *crop = [[FKCropAction alloc] init];
         CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
         crop.origin = cropRect.origin;
         crop.cropSize = cropRect.size;
-        _filterPicker.image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+        UIImage *image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+        _filterPicker = [[FKFilterPickerController alloc] initWithImage:image];
         
         [self presentModalViewController:_filterPicker animated:NO];
     }];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

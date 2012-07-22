@@ -61,13 +61,14 @@
     return [self init];
 }
 
-- (id)init
+- (id)initWithImage:(UIImage *)image
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         self.filters = [[NSMutableArray alloc] init];
         [self.filters addObject:[NSNull null]];
         
+        self.image = image;
         _currentFilterIndex = 0;
         
         NSUInteger next = 0;
