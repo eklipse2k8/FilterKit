@@ -15,8 +15,15 @@
 
 - (UIImage *)imageWithActionAppliedWithImage:(UIImage *)image
 {
-    return nil;
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    CGRect cropRect = CGRectMake(_origin.x * scale, _origin.y * scale,
+                                 _cropSize.width * scale, _cropSize.height * scale);
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    UIImage *result = [UIImage imageWithCGImage:imageRef scale:scale orientation:image.imageOrientation];
+    CGImageRelease(imageRef);
+    
+    return result;
 }
-
 
 @end
