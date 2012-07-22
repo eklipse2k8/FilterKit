@@ -69,7 +69,6 @@
         
         UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeViewPort:)];
         [self.view addGestureRecognizer:swipeGestureRecognizer];
-        swipeGestureRecognizer.delegate = self;
   
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragViewPort:)];
         [self.view addGestureRecognizer:panGestureRecognizer];
@@ -123,7 +122,7 @@
 
     CGFloat offset = MAX(-1.0, MIN((multiplier*currentTranslation.y)/DRAG_DISTANCE, 1.0));
 
-    NSLog(@"y trans: %f, x loc: %f, mult: %f, off: %f", currentTranslation.y, [gestureRecognizer locationInView:self.view].x, multiplier, offset);
+//    NSLog(@"y trans: %f, x loc: %f, mult: %f, off: %f", currentTranslation.y, [gestureRecognizer locationInView:self.view].x, multiplier, offset);
     
     if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
         
@@ -162,9 +161,9 @@
     [CATransaction setAnimationDuration:0.2];
     [CATransaction setCompletionBlock:^{
         if(offset < 0)
-            [self swapToNextfilter];
-        else
             [self swapToPreviousfilter];
+        else
+            [self swapToNextfilter];
     }];
     
     if(offset < 0){
