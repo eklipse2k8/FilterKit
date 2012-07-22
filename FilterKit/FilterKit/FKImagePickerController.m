@@ -42,6 +42,8 @@
 
 - (void)loadView
 {
+//    self.view = _filterPicker.view;
+    
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.opaque = NO;
     self.view.backgroundColor = [UIColor clearColor];
@@ -57,10 +59,8 @@
     NSLog(@"View Loaded");
     
     if (!_showPicker) {
-        dispatch_async(dispatch_get_main_queue(), ^{
             [self presentModalViewController:_imagePicker animated:YES];
             _showPicker = YES;
-        });
     }
 }
 
@@ -82,16 +82,17 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        FKCropAction *crop = [[FKCropAction alloc] init];
-        CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
-        crop.origin = cropRect.origin;
-        crop.cropSize = cropRect.size;
-        UIImage *image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
-        _filterPicker = [[FKFilterPickerController alloc] initWithImage:image];
-        
-        [self presentModalViewController:_filterPicker animated:NO];
-    }];
+    FKCropAction *crop = [[FKCropAction alloc] init];
+    CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect] CGRectValue];
+    crop.origin = cropRect.origin;
+    crop.cropSize = cropRect.size;
+    UIImage *image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
+    
+    _filterPicker = [[FKFilterPickerController alloc] initWithImage:image];
+    _filterPicker.view.frame = CGRectOffset(_filterPicker.view.frame, 0, -20);
+    [self.view addSubview:_filterPicker.view];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
