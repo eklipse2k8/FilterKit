@@ -18,4 +18,6 @@
 
 @interface FKImagePickerController : UIViewController
 
+@property (assign, nonatomic) id <FKImagePickerDelegate> delegate;
+
 @end

@@ -50,6 +50,7 @@
     NSUInteger _currentFilterIndex;
 }
 
+@synthesize delegate = _delegate;
 @synthesize imageView, filteredImageView, activityIndicator, chrome;
 @synthesize disk, filterMask;
 @synthesize filters, filteredImages;
