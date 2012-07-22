@@ -52,12 +52,12 @@
 
 - (NSString *)title
 {
-    return @"Blue Valentine";
+    return @"Yellow Cake";
 }
 
 - (NSString *)localizedTitle
 {
-    return NSLocalizedString(@"Blue Valentine", @"Localized title for default filter chain.");
+    return NSLocalizedString(@"Yellow Cake", @"Localized title for default filter chain.");
 }
 
 

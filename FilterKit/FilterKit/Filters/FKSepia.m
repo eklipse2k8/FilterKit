@@ -44,7 +44,7 @@
 
 - (NSString *)localizedTitle
 {
-    return NSLocalizedString(@"Black & White", @"Localized title for default filter chain.");
+    return NSLocalizedString(@"Sepia", @"Localized title for default filter chain.");
 }
 
 
