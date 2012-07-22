@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FKBlackWhiteFilter.h"
 #import "FKLightLeakFilter.h"
+#import "FKFilters.h"
 
 #define RADIANS(degrees) (degrees / 180.0 * M_PI)
 
@@ -37,7 +38,7 @@
 
 
 @implementation FKImagePickerController {
-    int _currentFilterIndex;
+    NSUInteger _currentFilterIndex;
 }
 
 @synthesize imageView, filteredImageView, disk;
@@ -50,11 +51,16 @@
     if (self) {
         self.filters = [[NSMutableArray alloc] init];
         [self.filters addObject:[NSNull null]];
-        [self.filters addObject:[FKBlackWhiteFilter class]];
-        [self.filters addObject:[FKLightLeakFilter class]];
         
         _currentFilterIndex = 0;
-        
+
+        NSUInteger next = 0;
+        NSString *filterListString = FKFilterList[next++];
+        while (filterListString != nil) {
+            [self.filters addObject:NSClassFromString(filterListString)];
+            filterListString = FKFilterList[next++];
+        }
+                
         self.view.backgroundColor = [UIColor blackColor];
         self.view.opaque = YES;
         self.view.clipsToBounds = YES;
@@ -143,7 +149,7 @@
     CGFloat offset = MAX(-1.0, MIN((multiplier*currentTranslation.y)/DRAG_DISTANCE, 1.0));
     
     if(gestureRecognizer.state == UIGestureRecognizerStateBegan){
-        
+
         if(offset < 0)
             [self preparePreviousFilter];
         else
@@ -151,7 +157,7 @@
         
     }else if(gestureRecognizer.state == UIGestureRecognizerStateEnded || 
        gestureRecognizer.state == UIGestureRecognizerStateCancelled){
-        
+            
         [UIView animateWithDuration:0.2 animations:^{
             if(fabs(offset) > 0.5){
                 if(offset < 0){
@@ -191,28 +197,44 @@
 #pragma mark - Filter Application
 
 - (void)preparePreviousFilter
-{
-    if(_currentFilterIndex == 0) return;
-    
-    Class group = (Class)[self.filters objectAtIndex:_currentFilterIndex-1];
-    self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
-    self.filteredImageView.filterChain = [[group alloc] init];
-    [self.filteredImageView processFilterChain];
+{    
+    NSLog(@"prev");
+    if(_currentFilterIndex == 0)
+        [self prepareFilterForIndex:[self.filters count]-1];
+    else
+        [self prepareFilterForIndex:_currentFilterIndex-1];
 }
 
 - (void)prepareNextFilter
 {
-    if(_currentFilterIndex == [self.filters count]-1) return;
+    NSLog(@"next");
+    if(_currentFilterIndex == [self.filters count]-1)
+        [self prepareFilterForIndex:0];
+    else
+        [self prepareFilterForIndex:_currentFilterIndex+1];
+}
+
+- (void)prepareFilterForIndex:(NSUInteger)index
+{
+    NSLog(@"preparing: %d", index);
     
-    Class group = (Class)[self.filters objectAtIndex:_currentFilterIndex+1];
+    Class filter = (Class)[self.filters objectAtIndex:_currentFilterIndex];
+    
     self.filteredImageView.image = [UIImage imageNamed:@"unfiltered.jpg"];
-    self.filteredImageView.filterChain = [[group alloc] init];
-    [self.filteredImageView processFilterChain];
+    
+    if(![filter isKindOfClass:[NSNull class]]){    
+        self.filteredImageView.filterChain = [[filter alloc] init];
+        [self.filteredImageView processFilterChain];
+    }
 }
 
 - (void)swapToNextfilter
-{
-    _currentFilterIndex = MAX(_currentFilterIndex-1, 0);
+{    
+    NSLog(@"swapping");
+    if(_currentFilterIndex == [self.filters count]-1) 
+        _currentFilterIndex = 0;
+    else
+        _currentFilterIndex++;
     
     //reset disk & mask
     [CATransaction begin];
@@ -224,7 +246,12 @@
 
 - (void)swapToPreviousfilter
 {
-    _currentFilterIndex = MIN(_currentFilterIndex+1, [self.filters count]-1);
+    NSLog(@"swapping");
+
+    if(_currentFilterIndex == 0)
+        _currentFilterIndex = [self.filters count]-1;
+    else
+        _currentFilterIndex--;
     
     UIImage *image = self.imageView.image;
     self.imageView.image = self.filteredImageView.image;

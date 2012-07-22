@@ -15,7 +15,7 @@
 // If you plan to disable a filter, make sure to uncheck it from the framework so that it
 // doesn't get compiled into the application.
 
-const NSString * const FKFilterList[] = {
+NSString * const FKFilterList[] = {
     @"FKBlackWhiteFilter",
     @"FKLightLeakFilter",
     nil

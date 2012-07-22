@@ -1,5 +1,5 @@
 //
-//  FKLibraryImagePickerController.h
+//  FKImagePickerController.h
 //  FilterKit
 //
 //  Created by Matt Jarjoura on 7/21/12.

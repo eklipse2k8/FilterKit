@@ -75,12 +75,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4528F1215BB212500D675BC /* libFilterKit.a in Frameworks */,
 				A4528F4415BB5F6000D675BC /* AVFoundation.framework in Frameworks */,
 				A4528F4215BB5F5400D675BC /* CoreVideo.framework in Frameworks */,
 				A4528F1815BB223C00D675BC /* CoreMedia.framework in Frameworks */,
 				A4528F1515BB222F00D675BC /* OpenGLES.framework in Frameworks */,
 				A4528F1615BB222F00D675BC /* QuartzCore.framework in Frameworks */,
-				A4528F1215BB212500D675BC /* libFilterKit.a in Frameworks */,
 				A4E7041715BB19210036C98D /* UIKit.framework in Frameworks */,
 				A4E7041915BB19210036C98D /* Foundation.framework in Frameworks */,
 				A4E7041B15BB19210036C98D /* CoreGraphics.framework in Frameworks */,
@@ -353,9 +353,9 @@
 				);
 				INFOPLIST_FILE = "FilterDemoApp/FilterDemoApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../lib/GPUImage/build/Release-iphoneos\"",
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-v",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -374,9 +374,9 @@
 				);
 				INFOPLIST_FILE = "FilterDemoApp/FilterDemoApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../lib/GPUImage/build/Release-iphoneos\"",
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-v",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
