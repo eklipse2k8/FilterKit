@@ -46,14 +46,19 @@
     GPUImageOutput *lastFilter = picture;
     GPUImageFilter *filter = nil;
     
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize processSize = CGSizeMake(image.size.width * scale, image.size.height * scale);
+    
     NSUInteger count = [_gpuFilters count];
     for (NSUInteger i = 0; i < count; i++) {
         filter = [_gpuFilters objectAtIndex:i];
-        [filter forceProcessingAtSize:image.size];
+        [filter forceProcessingAtSize:processSize];
         [lastFilter removeAllTargets];
         [lastFilter addTarget:filter];
         lastFilter = filter;
     }
+    
+    //[lastFilter prepareForImageCapture];
     [picture processImage];
     return lastFilter.imageFromCurrentlyProcessedOutput;
 }

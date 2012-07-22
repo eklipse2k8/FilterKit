@@ -1,5 +1,5 @@
 //
-//  FKFilterPictureController.h
+//  FKImagePickerController.h
 //  FilterKit
 //
 //  Created by Matt Jarjoura on 7/21/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FKFilterPictureController : UIViewController
+@interface FKImagePickerController : UIViewController
 
 @end

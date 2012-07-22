@@ -16,10 +16,12 @@
 // doesn't get compiled into the application.
 
 NSString * const FKFilterList[] = {
+    @"FKToon",
     @"FKBlackWhiteFilter",
     @"FKSepia",
+    @"FKYellowCake",
     @"FKBlueValentine",
-//    @"FKLightLeakFilter",
+    
     nil
 };
 
