@@ -89,7 +89,7 @@
         crop.cropSize = cropRect.size;
         _filterPicker.image = [crop imageWithActionAppliedWithImage:[info objectForKey:UIImagePickerControllerOriginalImage]];
         
-        [self presentModalViewController:_filterPicker animated:YES];
+        [self presentModalViewController:_filterPicker animated:NO];
     }];
     
 }

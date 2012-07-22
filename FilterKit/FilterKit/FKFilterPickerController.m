@@ -101,7 +101,6 @@
     self.filterMask.anchorPoint = CGPointMake(0.0, 0.5);
     self.filterMask.transform = MASK_NEXT_TRANSFORM;
     self.filteredImageView.layer.mask = filterMask;
-//    [self.view.layer addSublayer:self.filterMask];
     
     self.disk = [CALayer layer];
     self.disk.frame = CGRectMake(DISK_CENTER_X, imageFrame.origin.y-(2000-imageFrame.size.height)/2, 1000, 2000);
