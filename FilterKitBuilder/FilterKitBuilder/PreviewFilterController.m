@@ -25,7 +25,7 @@
 - (void)refresh {
     [imageSource processImage];
     imageView.image = [filterGroup imageFromCurrentlyProcessedOutput];
-    imageView.frame = CGRectMake(301, 160, imageView.image.size.width, imageView.image.size.height);
+    imageView.frame = CGRectMake(301, 20, imageView.image.size.width, imageView.image.size.height);
 }
 
 - (void)updateGroup {
@@ -77,7 +77,7 @@
     [super loadView];
     self.view.backgroundColor = [UIColor blackColor];
 
-    self.imageSource = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"garden.jpg"]];
+    self.imageSource = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"sample.jpg"]];
     self.builders = [NSMutableArray arrayWithObjects:
             [[FKContrastFilterBuilder alloc] initWithDelegate:self],
             [[FKSaturationFilterBuilder alloc] initWithDelegate:self],

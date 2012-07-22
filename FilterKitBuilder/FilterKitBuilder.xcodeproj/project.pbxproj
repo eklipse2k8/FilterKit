@@ -27,6 +27,7 @@
 		E44F2F8915BB72D700B4DDC1 /* FKSharpenFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDC0 /* FKSharpenFilterBuilder.m */; };
 		E44F2F8915BB72D700B4DDC4 /* FKVignetteFilterBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDC3 /* FKVignetteFilterBuilder.m */; };
 		E44F2F8915BB72D700B4DDCA /* StyleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDC9 /* StyleFactory.m */; };
+		E44F2F8915BB72D700B4DDCD /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E44F2F8915BB72D700B4DDCC /* sample.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E44F2F8915BB72D700B4DDC5 /* FKVignetteFilterBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKVignetteFilterBuilder.h; sourceTree = "<group>"; };
 		E44F2F8915BB72D700B4DDC9 /* StyleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleFactory.m; sourceTree = "<group>"; };
 		E44F2F8915BB72D700B4DDCB /* StyleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleFactory.h; sourceTree = "<group>"; };
+		E44F2F8915BB72D700B4DDCC /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		E44F2F4C15BB716700B4DDA7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E44F2F8915BB72D700B4DDCC /* sample.jpg */,
 				E44F2F8915BB72D700B4DDAE /* garden.jpg */,
 				E44F2F4D15BB716700B4DDA7 /* FilterKitBuilder-Info.plist */,
 				E44F2F4E15BB716700B4DDA7 /* InfoPlist.strings */,
@@ -246,6 +249,7 @@
 			files = (
 				E44F2F5015BB716700B4DDA7 /* InfoPlist.strings in Resources */,
 				E44F2F8915BB72D700B4DDAF /* garden.jpg in Resources */,
+				E44F2F8915BB72D700B4DDCD /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
