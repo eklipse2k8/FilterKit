@@ -46,9 +46,9 @@
     
     
     [filter addGPUFilter:expoFilter];
-    [filter addGPUFilter:expoFilter];
     [filter addGPUFilter:monoFilter];
     [filter addGPUFilter:saturFilter];
+    [filter addGPUFilter:vigFilter];
     
     
     
