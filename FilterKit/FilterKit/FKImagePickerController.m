@@ -10,7 +10,7 @@
 #import "FKFilterPickerController.h"
 #import "FKCropAction.h"
 
-@interface FKImagePickerController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface FKImagePickerController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, FKFilterPickerDelegate>
 
 @end
 
@@ -20,6 +20,8 @@
     FKFilterPickerController *_filterPicker;
     BOOL _showPicker;
 }
+
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,8 +44,6 @@
 
 - (void)loadView
 {
-//    self.view = _filterPicker.view;
-    
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view.opaque = NO;
     self.view.backgroundColor = [UIColor clearColor];
@@ -56,28 +56,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"View Loaded");
-    
     if (!_showPicker) {
-            [self presentModalViewController:_imagePicker animated:YES];
-            _showPicker = YES;
+        [self presentModalViewController:_imagePicker animated:YES];
+        _showPicker = YES;
     }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    
-}
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -90,6 +77,7 @@
     
     _filterPicker = [[FKFilterPickerController alloc] initWithImage:image];
     _filterPicker.view.frame = CGRectOffset(_filterPicker.view.frame, 0, -20);
+    _filterPicker.delegate = self;
     [self.view addSubview:_filterPicker.view];
     
     [self dismissModalViewControllerAnimated:YES];
@@ -97,8 +85,27 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [self dismissModalViewControllerAnimated:NO];
+    [self dismissModalViewControllerAnimated:YES];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
+        [_delegate imagePickerControllerDidCancel:self];
+    }
 }
 
+- (void)filterPicker:(FKFilterPickerController *)picker didFinishPickingFilterWithInfo:(NSDictionary *)info
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(imagePickerController:didFinishPickingMediaWithInfo:)]) {
+        [_delegate imagePickerController:self didFinishPickingMediaWithInfo:nil];
+    }
+}
+
+- (void)filterPickerDidCancel:(FKFilterPickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
+        [_delegate imagePickerControllerDidCancel:self];
+    }
+}
 
 @end

@@ -10,7 +10,7 @@
 #import "FKFilterPickerController.h"
 #import "FKImagePickerController.h"
 
-@interface ViewController ()
+@interface ViewController () <FKImagePickerDelegate>
 
 @end
 
@@ -32,6 +32,18 @@
 {
     FKImagePickerController *imagePicker = [[FKImagePickerController alloc] init];
     [self presentModalViewController:imagePicker animated:YES];
+}
+
+#pragma mark - FKImagePickerDelegate
+
+- (void)imagePickerController:(FKImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+}
+
+- (void)imagePickerControllerDidCancel:(FKImagePickerController *)picker
+{
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

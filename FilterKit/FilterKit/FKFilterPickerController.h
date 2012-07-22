@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class FKFilterPickerController;
+
+@protocol FKFilterPickerDelegate <NSObject>
+@optional
+- (void)filterPicker:(FKFilterPickerController *)picker didFinishPickingFilterWithInfo:(NSDictionary *)info;
+- (void)filterPickerDidCancel:(FKFilterPickerController *)picker;
+@end
+
 @interface FKFilterPickerController : UIViewController
 
+@property (nonatomic, assign) id <FKFilterPickerDelegate> delegate;
 @property (nonatomic, retain) UIImage *image;
 - (id)initWithImage:(UIImage *)image;
 
