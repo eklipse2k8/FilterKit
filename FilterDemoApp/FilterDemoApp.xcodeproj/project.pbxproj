@@ -28,8 +28,6 @@
 		D093750615BC7B3D00719CF0 /* bottomBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093750515BC7B3D00719CF0 /* bottomBar@2x.png */; };
 		D093751515BC956B00719CF0 /* donePickingButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093751415BC956B00719CF0 /* donePickingButton@2x.png */; };
 		D093751715BC975100719CF0 /* navBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D093751615BC975100719CF0 /* navBarButton@2x.png */; };
-		E44F2F0E15BB5AA800B4DDA7 /* cat_burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E44F2F0D15BB5AA800B4DDA7 /* cat_burger.jpg */; };
-		E44F2F1015BB629200B4DDA7 /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = E44F2F0F15BB629200B4DDA7 /* overlay.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +74,6 @@
 		D093750515BC7B3D00719CF0 /* bottomBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomBar@2x.png"; sourceTree = "<group>"; };
 		D093751415BC956B00719CF0 /* donePickingButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "donePickingButton@2x.png"; sourceTree = "<group>"; };
 		D093751615BC975100719CF0 /* navBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBarButton@2x.png"; sourceTree = "<group>"; };
-		E44F2F0D15BB5AA800B4DDA7 /* cat_burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat_burger.jpg; sourceTree = "<group>"; };
-		E44F2F0F15BB629200B4DDA7 /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +146,6 @@
 		A4E7041D15BB19210036C98D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E44F2F0F15BB629200B4DDA7 /* overlay.png */,
-				E44F2F0D15BB5AA800B4DDA7 /* cat_burger.jpg */,
 				A4E7041E15BB19210036C98D /* FilterDemoApp-Info.plist */,
 				A4E7041F15BB19210036C98D /* InfoPlist.strings */,
 				A4E7042215BB19210036C98D /* main.m */,
@@ -260,8 +254,6 @@
 			files = (
 				A4E7042115BB19210036C98D /* InfoPlist.strings in Resources */,
 				A4E7042D15BB19210036C98D /* ViewController.xib in Resources */,
-				E44F2F0E15BB5AA800B4DDA7 /* cat_burger.jpg in Resources */,
-				E44F2F1015BB629200B4DDA7 /* overlay.png in Resources */,
 				D09374A715BB845000719CF0 /* disk@2x.png in Resources */,
 				D093750015BC74F800719CF0 /* cameraViewPort@2x.png in Resources */,
 				D093750215BC76D700719CF0 /* navBar@2x.png in Resources */,
